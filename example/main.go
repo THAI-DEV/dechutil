@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	s := dechutil.CurrentCallDir()
-	fmt.Println("Curr Dir :", s)
+	currDir := dechutil.CurrentCallDir()
+	fmt.Println("Curr Dir :", currDir)
 }
