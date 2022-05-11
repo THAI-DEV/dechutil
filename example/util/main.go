@@ -12,17 +12,17 @@ func main() {
 
 	fmt.Println("--------------------------")
 
-	sl1 := []string{"a", "b", "c"}
-	sl2 := []int{1, 2, 3}
+	slice1 := []string{"a", "b", "c"}
+	slice2 := []int{1, 2, 3}
 
-	arr1 := dechutil.ConvertAnySliceToSliceInf(sl1)
-	arr2 := dechutil.ConvertAnySliceToSliceInf(sl2)
+	arr1 := dechutil.ConvertAnySliceToSliceInf(slice1)
+	arr2 := dechutil.ConvertAnySliceToSliceInf(slice2)
 
-	fmt.Printf("%T %+v\n", sl1, sl1)
+	fmt.Printf("%T %+v\n", slice1, slice1)
 	fmt.Printf("%T %+v\n", arr1, arr1)
 
 	fmt.Println("--------------------------")
 
-	fmt.Printf("%T %+v\n", sl1, sl2)
+	fmt.Printf("%T %+v\n", slice1, slice2)
 	fmt.Printf("%T %+v\n", arr1, arr2)
 }
