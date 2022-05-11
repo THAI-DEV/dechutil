@@ -6,7 +6,7 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 11/05/2022 17:55"
+	return "DECH Util , Version : 1.0.0 , Last Build : 11/05/2022 21:00"
 }
 
 // Convert a slice or array of a specific type to array of interface{}
