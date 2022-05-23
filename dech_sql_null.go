@@ -5,13 +5,13 @@ import (
 	"time"
 )
 
-func SqlNullString(isSetNull bool, s string) sql.NullString {
+func SqlNullString(isSetNull bool, val string) sql.NullString {
 	if isSetNull {
 		return sql.NullString{}
 	}
 
 	return sql.NullString{
-		String: s,
+		String: val,
 		Valid:  true,
 	}
 }
@@ -93,65 +93,65 @@ func SqlNullByte(isSetNull bool, val byte) sql.NullByte {
 	}
 }
 
-func StringSqlNullValue(v sql.NullString) *string {
-	if v.Valid {
-		return &v.String
+func StringSqlNullValue(val sql.NullString) *string {
+	if val.Valid {
+		return &val.String
 	} else {
 		return nil
 	}
 }
 
-func Int16SqlNullValue(v sql.NullInt16) *int16 {
-	if v.Valid {
-		return &v.Int16
+func Int16SqlNullValue(val sql.NullInt16) *int16 {
+	if val.Valid {
+		return &val.Int16
 	} else {
 		return nil
 	}
 }
 
-func Int32SqlNullValue(v sql.NullInt32) *int32 {
-	if v.Valid {
-		return &v.Int32
+func Int32SqlNullValue(val sql.NullInt32) *int32 {
+	if val.Valid {
+		return &val.Int32
 	} else {
 		return nil
 	}
 }
 
-func Int64SqlNullValue(v sql.NullInt64) *int64 {
-	if v.Valid {
-		return &v.Int64
+func Int64SqlNullValue(val sql.NullInt64) *int64 {
+	if val.Valid {
+		return &val.Int64
 	} else {
 		return nil
 	}
 }
 
-func TimeSqlNullValue(v sql.NullTime) *time.Time {
-	if v.Valid {
-		return &v.Time
+func TimeSqlNullValue(val sql.NullTime) *time.Time {
+	if val.Valid {
+		return &val.Time
 	} else {
 		return nil
 	}
 }
 
-func Float64SqlNullValue(v sql.NullFloat64) *float64 {
-	if v.Valid {
-		return &v.Float64
+func Float64SqlNullValue(val sql.NullFloat64) *float64 {
+	if val.Valid {
+		return &val.Float64
 	} else {
 		return nil
 	}
 }
 
-func boolSqlNullValue(v sql.NullBool) *bool {
-	if v.Valid {
-		return &v.Bool
+func boolSqlNullValue(val sql.NullBool) *bool {
+	if val.Valid {
+		return &val.Bool
 	} else {
 		return nil
 	}
 }
 
-func byteSqlNullValue(v sql.NullByte) *byte {
-	if v.Valid {
-		return &v.Byte
+func byteSqlNullValue(val sql.NullByte) *byte {
+	if val.Valid {
+		return &val.Byte
 	} else {
 		return nil
 	}
