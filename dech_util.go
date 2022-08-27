@@ -7,7 +7,7 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 28/05/2022 18:50"
+	return "DECH Util , Version : 1.0.0 , Last Build : 27/08/2022 14:57"
 }
 
 // Convert a slice or array of a specific type to array of interface{}
@@ -31,6 +31,31 @@ func PrintData(data interface{}) {
 	cv := ConvertAnySliceToSliceInf(data)
 	for _, v := range cv {
 		fmt.Printf("\n%#v\n", v)
+	}
+}
+
+func FormatComma(n int64) string {
+	in := strconv.FormatInt(n, 10)
+	numOfDigits := len(in)
+	if n < 0 {
+		numOfDigits-- // First character is the - sign (not a digit)
+	}
+	numOfCommas := (numOfDigits - 1) / 3
+
+	out := make([]byte, len(in)+numOfCommas)
+	if n < 0 {
+		in, out[0] = in[1:], '-'
+	}
+
+	for i, j, k := len(in)-1, len(out)-1, 0; ; i, j = i-1, j-1 {
+		out[j] = in[i]
+		if i == 0 {
+			return string(out)
+		}
+		if k++; k == 3 {
+			j, k = j-1, 0
+			out[j] = ','
+		}
 	}
 }
 
