@@ -233,7 +233,7 @@ func Float64SqlNullValue(val sql.NullFloat64) *float64 {
 	}
 }
 
-func boolSqlNullValue(val sql.NullBool) *bool {
+func BoolSqlNullValue(val sql.NullBool) *bool {
 	if val.Valid {
 		return &val.Bool
 	} else {
@@ -241,7 +241,7 @@ func boolSqlNullValue(val sql.NullBool) *bool {
 	}
 }
 
-func byteSqlNullValue(val sql.NullByte) *byte {
+func ByteSqlNullValue(val sql.NullByte) *byte {
 	if val.Valid {
 		return &val.Byte
 	} else {

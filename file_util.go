@@ -2,7 +2,7 @@ package dechutil
 
 import (
 	"fmt"
-	"io/ioutil"
+
 	"os"
 	"strings"
 )
@@ -51,7 +51,7 @@ func ReadFileAndDirName(path string) []string {
 }
 
 func ReadFileName(path string) []string {
-	files, err := ioutil.ReadDir(path)
+	files, err := os.ReadDir(path)
 	if err != nil {
 		fmt.Printf("%s\n", err)
 	}
@@ -69,7 +69,7 @@ func ReadFileName(path string) []string {
 }
 
 func ReadDirName(path string) []string {
-	files, err := ioutil.ReadDir(path)
+	files, err := os.ReadDir(path)
 	if err != nil {
 		fmt.Printf("%s\n", err)
 	}
