@@ -1,6 +1,9 @@
 package dechutil
 
-import "strings"
+import (
+	"math"
+	"strings"
+)
 
 func SeparateGroupSlice(inputSlice []string, groupNum int, isAsymmetryMember bool) []string {
 	/*
@@ -126,6 +129,43 @@ func DistributeGroupSlice(inputSlice []string, groupNum int) []string {
 	}
 
 	return resultList
+}
+
+func ComputeIndexGroupSlice(numLen int, numStep int) [][]int {
+	/*
+		input := []int{1,2,3,4,5,6,7,8,9,10}
+
+		info := ComputeIndexGroupSlice(len(input), 6)
+		for i := 0; i < len(info); i++ {
+			beginInd := info[i][0]
+			endInd := info[i][1]
+			data := input[beginInd:endInd]
+			fmt.Println(data)
+		}
+
+		output
+			[1 2 3 4 5 6]
+			[7 8 9 10]
+	*/
+	f := float64(numLen) / float64(numStep)
+	f = math.Ceil(f)
+	numRow := int(f)
+
+	result := [][]int{}
+	var a = [2]int{0, 0}
+	beginInd := 0
+	endInd := 0
+	for i := 0; i < numRow; i++ {
+		factor := i * numStep
+		a[0] = beginInd + factor
+		a[1] = endInd + numStep + factor
+		if a[1] > numLen {
+			a[1] = numLen
+		}
+		result = append(result, []int{a[0], a[1]})
+	}
+
+	return result
 }
 
 func convertStringParam2Slice(strParam string,
