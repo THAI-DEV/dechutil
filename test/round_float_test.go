@@ -1,6 +1,10 @@
 package dechutil
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/THAI-DEV/dechutil"
+)
 
 func TestRoundFloat(t *testing.T) {
 	type args struct {
@@ -23,7 +27,7 @@ func TestRoundFloat(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := RoundFloat(tt.args.data, tt.args.decimals); got != tt.want {
+			if got := dechutil.RoundFloat(tt.args.data, tt.args.decimals); got != tt.want {
 				t.Errorf("RoundFloat() = %v, want %v", got, tt.want)
 			}
 		})
@@ -35,6 +39,6 @@ func Benchmark_RoundFloat(b *testing.B) {
 	inputData2 := 2
 
 	for i := 0; i < b.N; i++ {
-		RoundFloat(inputData1, inputData2)
+		dechutil.RoundFloat(inputData1, inputData2)
 	}
 }
