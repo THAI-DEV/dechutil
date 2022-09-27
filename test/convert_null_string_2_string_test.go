@@ -18,7 +18,7 @@ func TestConvertNullString2String(t *testing.T) {
 		want string
 	}{
 		// TODO: Add test cases.
-		{"Case 1", args{&val, "nill"}, "str"},
+		{"Case 1", args{&val, "null val"}, "str"},
 		{"Case 2", args{nil, "null val"}, "null val"},
 	}
 	for _, tt := range tests {

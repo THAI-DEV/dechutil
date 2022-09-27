@@ -69,6 +69,33 @@ func ConvertNullString2String(data *string, nullStrVal string) string {
 	return result
 }
 
+// * s1, b1 := dechutil.ConvertString2Null("abc", "xxxx") 			result : abc false
+// * s2, b2 := dechutil.ConvertString2Null("null val", "null val")  result :  <nil> true
+func ConvertString2Null(data string, defindStrVal string) (*string, bool) {
+	var result *string
+	var isNull bool
+
+	if data == defindStrVal {
+		result = nil
+		isNull = true
+	} else {
+		result = &data
+		isNull = false
+	}
+
+	return result, isNull
+}
+
+func IsNull(data *string) bool {
+	result := false
+
+	if data == nil {
+		result = true
+	}
+
+	return result
+}
+
 func RoundFloat(data float64, numRound int) float64 {
 	return math.Round(data*math.Pow(10, float64(numRound))) / math.Pow(10, float64(numRound))
 }
