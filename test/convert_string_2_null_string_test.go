@@ -7,7 +7,7 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func TestConvertString2Null(t *testing.T) {
+func TestConvertString2NullString(t *testing.T) {
 	var result *string
 	s := "xxx"
 	result = &s
@@ -28,7 +28,7 @@ func TestConvertString2Null(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, got1 := dechutil.ConvertString2Null(tt.args.data, tt.args.defindStrVal)
+			got, got1 := dechutil.ConvertString2NullString(tt.args.data, tt.args.defindStrVal)
 			if !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("ConvertString2Null() got = %v, want %v", got, tt.want)
 			}
@@ -39,11 +39,11 @@ func TestConvertString2Null(t *testing.T) {
 	}
 }
 
-func Benchmark_ConvertString2Null(b *testing.B) {
+func Benchmark_ConvertString2NullString(b *testing.B) {
 	inputData1 := "xxx"
 	inputData2 := "xxx"
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertString2Null(inputData1, inputData2)
+		dechutil.ConvertString2NullString(inputData1, inputData2)
 	}
 }

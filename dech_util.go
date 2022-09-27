@@ -8,10 +8,10 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 27/09/2022 19:58"
+	return "DECH Util , Version : 1.0.0 , Last Build : 27/09/2022 21:45"
 }
 
-// Convert a slice or array of a specific type to array of interface{}
+// * Convert a slice or array of a specific type to array of interface{}
 func ConvertAnySliceToSliceInf(input interface{}) []interface{} {
 	val := reflect.ValueOf(input)
 	// There is no need to check, we want to panic if it's not slice or array
@@ -69,9 +69,9 @@ func ConvertNullString2String(data *string, nullStrVal string) string {
 	return result
 }
 
-// * s1, b1 := dechutil.ConvertString2Null("abc", "xxxx") 			result : abc false
-// * s2, b2 := dechutil.ConvertString2Null("null val", "null val")  result :  <nil> true
-func ConvertString2Null(data string, defindStrVal string) (*string, bool) {
+// * input : "abc", "xxxx" output : abc false
+// * input :"null val", "null val" output : <nil> true
+func ConvertString2NullString(data string, defindStrVal string) (*string, bool) {
 	var result *string
 	var isNull bool
 
@@ -100,7 +100,7 @@ func RoundFloat(data float64, numRound int) float64 {
 	return math.Round(data*math.Pow(10, float64(numRound))) / math.Pow(10, float64(numRound))
 }
 
-// * ConvertSliceString2String([]string{"a",""b},"'","'",",")  return : 'a','b'
+// * input : []string{"a",""b},"'","'",","  output : 'a','b'
 func ConvertSliceString2String(data []string, wrapStr1 string, wrapStr2 string, saperateStr string) string {
 	result := ""
 	for i, v := range data {
