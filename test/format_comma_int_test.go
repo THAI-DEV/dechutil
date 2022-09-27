@@ -6,7 +6,7 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func TestFormatComma(t *testing.T) {
+func TestFormatCommaInt(t *testing.T) {
 	type args struct {
 		data int64
 	}
@@ -23,17 +23,17 @@ func TestFormatComma(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.FormatComma(tt.args.data); got != tt.want {
-				t.Errorf("FormatComma() = %v, want %v", got, tt.want)
+			if got := dechutil.FormatCommaInt(tt.args.data); got != tt.want {
+				t.Errorf("FormatCommaInt() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Benchmark_FormatComma(b *testing.B) {
+func Benchmark_FormatCommaInt(b *testing.B) {
 	inputData := int64(23)
 
 	for i := 0; i < b.N; i++ {
-		dechutil.FormatComma(inputData)
+		dechutil.FormatCommaInt(inputData)
 	}
 }
