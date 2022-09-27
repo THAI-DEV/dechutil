@@ -73,6 +73,19 @@ func RoundFloat(data float64, numRound int) float64 {
 	return math.Round(data*math.Pow(10, float64(numRound))) / math.Pow(10, float64(numRound))
 }
 
+// * ConvertSliceString2String([]string{"a",""b},"'","'",",")  return : 'a','b'
+func ConvertSliceString2String(data []string, wrapStr1 string, wrapStr2 string, saperateStr string) string {
+	result := ""
+	for i, v := range data {
+		result = result + wrapStr1 + v + wrapStr2
+		if i < len(data)-1 {
+			result = result + saperateStr
+		}
+	}
+	// fmt.Println(result)
+	return result
+}
+
 /*
 func FormatComma2(number int) string {
 	p := message.NewPrinter(language.English)
