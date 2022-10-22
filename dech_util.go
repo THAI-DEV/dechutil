@@ -9,7 +9,7 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 27/09/2022 22:24"
+	return "DECH Util , Version : 1.0.0 , Last Build : 22/10/2022 16:26"
 }
 
 // * Convert a slice or array of a specific type to array of interface{}
