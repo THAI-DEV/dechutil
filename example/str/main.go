@@ -8,7 +8,7 @@ import (
 
 func main() {
 	str := "user login count"
-	s := dechutil.ConvertString2SnakeCaseAllCap(str)
+	s := dechutil.ConvertToSnakeCaseAllCap(str)
 	fmt.Println(s)
 
 }

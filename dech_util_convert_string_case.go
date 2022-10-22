@@ -7,7 +7,7 @@ import (
 //* Ref : https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841
 
 // User
-func ConvertToUpperCapString(input string) string {
+func ConvertToUpperCap(input string) string {
 	str := strings.ToLower(input)
 	strSlice := strings.Split(str, "")
 
@@ -15,7 +15,6 @@ func ConvertToUpperCapString(input string) string {
 	for i, v := range strSlice {
 		if i == 0 {
 			result = result + strings.ToUpper(v)
-
 		} else {
 			result = result + v
 		}
@@ -25,7 +24,7 @@ func ConvertToUpperCapString(input string) string {
 }
 
 // user
-func ConvertToLowerCapString(input string) string {
+func ConvertToLowerCap(input string) string {
 	str := strings.ToLower(input)
 	strSlice := strings.Split(str, "")
 
@@ -33,7 +32,6 @@ func ConvertToLowerCapString(input string) string {
 	for i, v := range strSlice {
 		if i == 0 {
 			result = result + strings.ToLower(v)
-
 		} else {
 			result = result + v
 		}
@@ -43,22 +41,22 @@ func ConvertToLowerCapString(input string) string {
 }
 
 // UserLoginCount
-func ConvertString2PascalCase(inputStr string) string {
+func ConvertToPascalCase(inputStr string) string {
 	str := strings.ReplaceAll(inputStr, "_", " ")
 
 	strSlice := strings.Split(str, " ")
 
 	result := ""
 	for _, v := range strSlice {
-		result = result + ConvertToUpperCapString(v)
+		result = result + ConvertToUpperCap(v)
 	}
 
 	return result
 }
 
 // userLoginCount
-func ConvertString2CamelCase(inputStr string) string {
-	result := ConvertString2PascalCase(inputStr)
+func ConvertToCamelCase(inputStr string) string {
+	result := ConvertToPascalCase(inputStr)
 
 	strSlice2 := strings.Split(result, "")
 	result = ""
@@ -75,7 +73,7 @@ func ConvertString2CamelCase(inputStr string) string {
 }
 
 // user_login_count
-func ConvertString2SnakeCase(inputStr string) string {
+func ConvertToSnakeCase(inputStr string) string {
 	str := strings.ToLower(inputStr)
 	result := strings.ReplaceAll(str, " ", "_")
 
@@ -83,7 +81,7 @@ func ConvertString2SnakeCase(inputStr string) string {
 }
 
 // USER_LOGIN_COUNT
-func ConvertString2SnakeCaseAllCap(inputStr string) string {
+func ConvertToSnakeCaseAllCap(inputStr string) string {
 	str := strings.ToUpper(inputStr)
 	result := strings.ReplaceAll(str, " ", "_")
 
@@ -91,7 +89,7 @@ func ConvertString2SnakeCaseAllCap(inputStr string) string {
 }
 
 // user-login-count
-func ConvertString2KebabCase(inputStr string) string {
+func ConvertToKebabCase(inputStr string) string {
 	str := strings.ToLower(inputStr)
 	result := strings.ReplaceAll(str, " ", "-")
 

@@ -21,7 +21,7 @@ func TestConvertString2PascalCase(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertString2PascalCase(tt.args.inputStr); got != tt.want {
+			if got := dechutil.ConvertToPascalCase(tt.args.inputStr); got != tt.want {
 				t.Errorf("ConvertString2PascalCase() = %v, want %v", got, tt.want)
 			}
 		})
@@ -32,6 +32,6 @@ func Benchmark_ConvertString2PascallCase(b *testing.B) {
 	inputData := "user login count"
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertString2PascalCase(inputData)
+		dechutil.ConvertToPascalCase(inputData)
 	}
 }

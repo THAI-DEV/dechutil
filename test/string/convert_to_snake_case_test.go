@@ -20,7 +20,7 @@ func TestConvertString2SnakeCase(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertString2SnakeCase(tt.args.inputStr); got != tt.want {
+			if got := dechutil.ConvertToSnakeCase(tt.args.inputStr); got != tt.want {
 				t.Errorf("ConvertString2SnakeCase() = %v, want %v", got, tt.want)
 			}
 		})
@@ -31,6 +31,6 @@ func Benchmark_ConvertString2SnakeCase(b *testing.B) {
 	inputData := "user login count"
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertString2SnakeCase(inputData)
+		dechutil.ConvertToSnakeCase(inputData)
 	}
 }
