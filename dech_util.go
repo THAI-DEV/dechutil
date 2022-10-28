@@ -3,6 +3,7 @@ package dechutil
 import (
 	"fmt"
 	"math"
+	"math/rand"
 	"reflect"
 	"strconv"
 	"strings"
@@ -133,6 +134,16 @@ func ConvertSliceString2String(data []string, wrapStr1 string, wrapStr2 string, 
 		}
 	}
 	// fmt.Println(result)
+	return result
+}
+
+func RandomInt(min, max int) int {
+	return rand.Intn(max-min) + min
+}
+
+func RandomFloat(min, max float64, numRound int) float64 {
+	result := min + rand.Float64()*(max-min)
+	result = RoundFloat(result, numRound)
 	return result
 }
 
