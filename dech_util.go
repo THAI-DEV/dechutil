@@ -10,13 +10,61 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 29/10/2022 10:30"
+	return "DECH Util , Version : 1.0.0 , Last Build : 29/10/2022 11:20"
 }
 
 func TypeAndKindOfObject(inf interface{}) (string, string) {
 	s1 := reflect.TypeOf(inf).String()
 	s2 := reflect.ValueOf(inf).Kind().String()
 	return s1, s2
+}
+
+func ConvertValueObjectToString(inf interface{}) string {
+	str, _ := TypeAndKindOfObject(inf)
+
+	if str == "string" {
+		val := inf.(string)
+		return val
+	}
+
+	if str == "int" {
+		val := inf.(int)
+		return strconv.Itoa(val)
+	}
+
+	if str == "int8" {
+		val := int(inf.(int8))
+		return strconv.Itoa(val)
+	}
+
+	if str == "int16" {
+		val := int(inf.(int16))
+		return strconv.Itoa(val)
+	}
+
+	if str == "int32" {
+		val := int(inf.(int32))
+		return strconv.Itoa(val)
+	}
+
+	if str == "int64" {
+		val := int(inf.(int64))
+		return strconv.Itoa(val)
+	}
+
+	if str == "float32" {
+		val := float64(inf.(float32))
+		str := strconv.FormatFloat(val, 'f', 4, 64)
+		return str
+	}
+
+	if str == "float64" {
+		val := float64(inf.(float64))
+		str := strconv.FormatFloat(val, 'f', 4, 64)
+		return str
+	}
+
+	return str
 }
 
 // * Convert a slice or array of a specific type to array of interface{}
