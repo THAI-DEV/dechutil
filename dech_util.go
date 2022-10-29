@@ -191,10 +191,12 @@ func ConvertSliceString2String(data []string, wrapStr1 string, wrapStr2 string, 
 	return result
 }
 
+// Random Min to Max-1
 func RandomInt(min, max int) int {
 	return rand.Intn(max-min) + min
 }
 
+// Random Min to Max-1
 func RandomFloat(min, max float64, decimal int) float64 {
 	result := min + rand.Float64()*(max-min)
 	result = RoundFloat(result, decimal)
