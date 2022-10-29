@@ -10,7 +10,7 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 29/10/2022 11:20"
+	return "DECH Util , Version : 1.0.0 , Last Build : 29/10/2022 11:30"
 }
 
 func TypeAndKindOfObject(inf interface{}) (string, string) {
@@ -19,7 +19,7 @@ func TypeAndKindOfObject(inf interface{}) (string, string) {
 	return s1, s2
 }
 
-func ConvertValueObjectToString(inf interface{}) string {
+func ConvertValueObjectToString(inf interface{}, decimal int) string {
 	str, _ := TypeAndKindOfObject(inf)
 
 	if str == "string" {
@@ -54,13 +54,13 @@ func ConvertValueObjectToString(inf interface{}) string {
 
 	if str == "float32" {
 		val := float64(inf.(float32))
-		str := strconv.FormatFloat(val, 'f', 4, 64)
+		str := strconv.FormatFloat(val, 'f', decimal, 64)
 		return str
 	}
 
 	if str == "float64" {
 		val := float64(inf.(float64))
-		str := strconv.FormatFloat(val, 'f', 4, 64)
+		str := strconv.FormatFloat(val, 'f', decimal, 64)
 		return str
 	}
 
@@ -116,8 +116,8 @@ func FormatCommaInt(data int64) string {
 	}
 }
 
-func FormatCommaFloat(data float64, round int) string {
-	str := strconv.FormatFloat(data, 'f', round, 64)
+func FormatCommaFloat(data float64, decimal int) string {
+	str := strconv.FormatFloat(data, 'f', decimal, 64)
 	strSlice := strings.SplitN(str, ".", -1)
 	str1 := ""
 	str2 := ""
@@ -174,8 +174,8 @@ func IsNull(data *string) bool {
 	return result
 }
 
-func RoundFloat(data float64, numRound int) float64 {
-	return math.Round(data*math.Pow(10, float64(numRound))) / math.Pow(10, float64(numRound))
+func RoundFloat(data float64, decimal int) float64 {
+	return math.Round(data*math.Pow(10, float64(decimal))) / math.Pow(10, float64(decimal))
 }
 
 // * input : []string{"a",""b},"'","'",","  output : 'a','b'
@@ -195,9 +195,9 @@ func RandomInt(min, max int) int {
 	return rand.Intn(max-min) + min
 }
 
-func RandomFloat(min, max float64, numRound int) float64 {
+func RandomFloat(min, max float64, decimal int) float64 {
 	result := min + rand.Float64()*(max-min)
-	result = RoundFloat(result, numRound)
+	result = RoundFloat(result, decimal)
 	return result
 }
 
