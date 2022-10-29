@@ -10,7 +10,13 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 22/10/2022 16:26"
+	return "DECH Util , Version : 1.0.0 , Last Build : 29/10/2022 10:30"
+}
+
+func TypeAndKindOfObject(inf interface{}) (string, string) {
+	s1 := reflect.TypeOf(inf).String()
+	s2 := reflect.ValueOf(inf).Kind().String()
+	return s1, s2
 }
 
 // * Convert a slice or array of a specific type to array of interface{}
