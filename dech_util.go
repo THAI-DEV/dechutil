@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func Version() string {
@@ -193,14 +194,45 @@ func ConvertSliceString2String(data []string, wrapStr1 string, wrapStr2 string, 
 
 // Random Min to Max-1
 func RandomInt(min, max int) int {
-	return rand.Intn(max-min) + min
+	rand1 := rand.NewSource(time.Now().UnixNano())
+	rand2 := rand.New(rand1)
+	return rand2.Intn(max-min) + min
 }
 
 // Random Min to Max-1
 func RandomFloat(min, max float64, decimal int) float64 {
-	result := min + rand.Float64()*(max-min)
+	rand1 := rand.NewSource(time.Now().UnixNano())
+	rand2 := rand.New(rand1)
+
+	result := min + rand2.Float64()*(max-min)
 	result = RoundFloat(result, decimal)
 	return result
+}
+
+func RandomString(num int, hasLower, hasUpper bool) string {
+	charset := ""
+	if hasLower && hasUpper {
+		charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	} else if hasLower && !hasUpper {
+		charset = "abcdefghijklmnopqrstuvwxyz"
+	} else if !hasLower && hasUpper {
+		charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	} else {
+		charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	}
+
+	rand1 := rand.NewSource(time.Now().UnixNano())
+	rand2 := rand.New(rand1)
+
+	result := ""
+	for {
+		if len(result) >= num {
+			return result
+		}
+
+		c := charset[rand2.Intn(len(charset))]
+		result = result + string(c)
+	}
 }
 
 /*
