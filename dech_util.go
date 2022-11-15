@@ -246,6 +246,7 @@ func RandomString(num int, hasLower, hasUpper, hasNumber, isRemoveSameChar bool)
 		result = result + string(<-ch)
 
 		if len(result) >= num {
+			close(ch)
 			break
 		}
 	}
