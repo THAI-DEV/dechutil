@@ -194,45 +194,78 @@ func ConvertSliceString2String(data []string, wrapStr1 string, wrapStr2 string, 
 
 // Random Min to Max-1
 func RandomInt(min, max int) int {
-	rand1 := rand.NewSource(time.Now().UnixNano())
-	rand2 := rand.New(rand1)
+	seed := rand.NewSource(time.Now().UnixNano())
+	rand2 := rand.New(seed)
 	return rand2.Intn(max-min) + min
 }
 
 // Random Min to Max-1
 func RandomFloat(min, max float64, decimal int) float64 {
-	rand1 := rand.NewSource(time.Now().UnixNano())
-	rand2 := rand.New(rand1)
+	seed := rand.NewSource(time.Now().UnixNano())
+	rand := rand.New(seed)
 
-	result := min + rand2.Float64()*(max-min)
+	result := min + rand.Float64()*(max-min)
 	result = RoundFloat(result, decimal)
 	return result
 }
 
-func RandomString(num int, hasLower, hasUpper bool) string {
-	charset := ""
-	if hasLower && hasUpper {
-		charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	} else if hasLower && !hasUpper {
-		charset = "abcdefghijklmnopqrstuvwxyz"
-	} else if !hasLower && hasUpper {
-		charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	} else {
-		charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+func RandomString(num int, hasLower, hasUpper, hasNumber, isRemoveSameChar bool) string {
+	charsetLower := "abcdefghijklmnopqrstuvwxyz"
+	charsetUpper := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	charsetNumber := "1234567890"
+	charsetSame := "1lkKcCoO0pPquUxXyYzZ"
+
+	var sb strings.Builder
+	if hasLower {
+		sb.WriteString(charsetLower)
 	}
 
-	rand1 := rand.NewSource(time.Now().UnixNano())
-	rand2 := rand.New(rand1)
+	if hasUpper {
+		sb.WriteString(charsetUpper)
+	}
+
+	if hasNumber {
+		sb.WriteString(charsetNumber)
+	}
+
+	charset := sb.String()
+
+	if isRemoveSameChar {
+		for _, v := range charsetSame {
+			charset = strings.ReplaceAll(charset, string(v), "")
+		}
+	}
+
+	seed := rand.NewSource(time.Now().UnixNano())
+	rand := rand.New(seed)
 
 	result := ""
+	ch := make(chan string)
 	for {
-		if len(result) >= num {
-			return result
-		}
+		go randomChar(rand, charset, ch)
+		result = result + string(<-ch)
 
-		c := charset[rand2.Intn(len(charset))]
-		result = result + string(c)
+		if len(result) >= num {
+			break
+		}
 	}
+
+	/*
+		for {
+			if len(result) >= num {
+				return result
+			}
+
+			c := charset[rand.Intn(len(charset))]
+			result = result + string(c)
+		}
+	*/
+	return result
+}
+
+func randomChar(rand *rand.Rand, charset string, ch chan string) {
+	c := charset[rand.Intn(len(charset))]
+	ch <- string(c)
 }
 
 /*

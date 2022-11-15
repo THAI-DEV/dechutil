@@ -7,5 +7,6 @@ import (
 )
 
 func main() {
-	fmt.Println(dechutil.RandomString(5, true, true))
+	fmt.Println(dechutil.RandomString(10, true, true, true, false))
+	fmt.Println(dechutil.RandomString(10, false, false, true, false))
 }
