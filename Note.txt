@@ -1,1 +1,4 @@
 godoc -http=:6060
+
+C:\My\SourceCode\DECH\GO\MyLib\dechutil\test\string\fuzz
+go test -fuzz=Fuzz
