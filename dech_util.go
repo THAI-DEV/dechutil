@@ -269,6 +269,10 @@ func randomChar(rand *rand.Rand, charset string, ch chan string) {
 	ch <- string(c)
 }
 
+func PointerOf[T any](value T) *T {
+	return &value
+}
+
 /*
 func FormatComma2(number int) string {
 	p := message.NewPrinter(language.English)
