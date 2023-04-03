@@ -26,3 +26,16 @@ func removeElement[T sliceInf](s []T, i int) ([]T, error) {
 	// and joining them together using `append`
 	return append(s[:i], s[i+1:]...), nil
 }
+
+// * input : []string{"a",""b},"'","'",","  output : 'a','b'
+func ConvertSliceString2String(data []string, wrapStr1 string, wrapStr2 string, saperateStr string) string {
+	result := ""
+	for i, v := range data {
+		result = result + wrapStr1 + v + wrapStr2
+		if i < len(data)-1 {
+			result = result + saperateStr
+		}
+	}
+	// fmt.Println(result)
+	return result
+}
