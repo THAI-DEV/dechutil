@@ -6,37 +6,37 @@ import (
 )
 
 // * YYYY-MM-DD hh:mm:ss.ffffff
-func ConverTime2StringDateTimeFull(timeVal time.Time) string {
+func ConverTimeToStringDateTimeFull(timeVal time.Time) string {
 	return timeVal.Format("2006-01-02 15:04:05.000000")
 }
 
 // * YYYY-MM-DD hh:mm:ss
-func ConverTime2StringDateTime(timeVal time.Time) string {
+func ConverTimeToStringDateTime(timeVal time.Time) string {
 	return timeVal.Format("2006-01-02 15:04:05")
 }
 
 // * YYYY-MM-DD
-func ConverTime2StringDate(timeVal time.Time) string {
+func ConverTimeToStringDate(timeVal time.Time) string {
 	return timeVal.Format("2006-01-02")
 }
 
 // * hh:mm:ss
-func ConverTime2StringTime(timeVal time.Time) string {
+func ConverTimeToStringTime(timeVal time.Time) string {
 	return timeVal.Format("15:04:05")
 }
 
 // * hh:mm:ss.ffffff
-func ConverTime2StringTimeFull(timeVal time.Time) string {
+func ConverTimeToStringTimeFull(timeVal time.Time) string {
 	return timeVal.Format("15:04:05.000000")
 }
 
 // * DD/MM/YYYY hh:mm:ss
-func ConverTime2ShowStringDateTime(timVal time.Time) string {
+func ConverTimeToShowStringDateTime(timVal time.Time) string {
 	return timVal.Format("02/01/2006 15:04:05")
 }
 
 // * DD/MM/YYYY
-func ConverTime2ShowStringDate(curr time.Time) string {
+func ConverTimeToShowStringDate(curr time.Time) string {
 	return curr.Format("02/01/2006")
 }
 

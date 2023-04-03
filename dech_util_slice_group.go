@@ -68,7 +68,7 @@ func SeparateGroupSlice(inputSlice []string, groupNum int, isAsymmetryMember boo
 
 			for i := 0; i < len(resultList); i++ {
 				str := ""
-				list := convertStringParam2Slice(
+				list := convertStringParamToSlice(
 					resultList[i], ",")
 				for j := 0; j < len(list); j++ {
 					if j < len(list)-1 {
@@ -168,7 +168,7 @@ func ComputeIndexGroupSlice(numLen int, numStep int) [][]int {
 	return result
 }
 
-func convertStringParam2Slice(strParam string,
+func convertStringParamToSlice(strParam string,
 	delimiter string) []string {
 	/*
 	 strMsg = "DM-01-01-01-01, MPS001"

@@ -25,7 +25,7 @@ func TestConvertSliceString2String(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertSliceString2String(tt.args.data, tt.args.wrapStr1, tt.args.wrapStr2, tt.args.saperateStr); got != tt.want {
+			if got := dechutil.ConvertSliceStringToString(tt.args.data, tt.args.wrapStr1, tt.args.wrapStr2, tt.args.saperateStr); got != tt.want {
 				t.Errorf("ConvertSliceString2String() = %v, want %v", got, tt.want)
 			}
 		})
@@ -39,6 +39,6 @@ func Benchmark_ConvertSliceString2String(b *testing.B) {
 	inputData4 := ","
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertSliceString2String(inputData1, inputData2, inputData3, inputData4)
+		dechutil.ConvertSliceStringToString(inputData1, inputData2, inputData3, inputData4)
 	}
 }

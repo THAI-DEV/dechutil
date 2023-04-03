@@ -65,7 +65,7 @@ func ConvertAnySliceToSliceInf(input interface{}) []interface{} {
 	return inf
 }
 
-func ConvertNullString2String(data *string, nullStrVal string) string {
+func ConvertNullStringToString(data *string, nullStrVal string) string {
 	result := nullStrVal
 	if data != nil {
 		result = *data
