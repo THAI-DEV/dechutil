@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	a := dechutil.PointerOf("abc")
+	a := dechutil.ConvertAnyValueToPointerValue("abc")
 	fmt.Println(*a)
 }
