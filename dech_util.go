@@ -92,10 +92,6 @@ func RoundFloat(data float64, decimal int) float64 {
 	return math.Round(data*math.Pow(10, float64(decimal))) / math.Pow(10, float64(decimal))
 }
 
-func PointerOf[T any](value T) *T {
-	return &value
-}
-
 /*
 func FormatComma2(number int) string {
 	p := message.NewPrinter(language.English)

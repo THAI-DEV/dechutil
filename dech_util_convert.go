@@ -108,3 +108,7 @@ func ConvertStringToInt(strValue string) int {
 
 	return result
 }
+
+func ConvertAnyValueToPointerValue[T any](value T) *T {
+	return &value
+}
