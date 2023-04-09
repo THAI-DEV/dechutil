@@ -6,7 +6,7 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func TestConvertString2SnakeCaseAllCap(t *testing.T) {
+func TestToSnakeCaseAllCap(t *testing.T) {
 	type args struct {
 		inputStr string
 	}
@@ -20,17 +20,17 @@ func TestConvertString2SnakeCaseAllCap(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertToSnakeCaseAllCap(tt.args.inputStr); got != tt.want {
-				t.Errorf("ConvertString2SnakeCaseAllCap() = %v, want %v", got, tt.want)
+			if got := dechutil.ToSnakeCaseAllCap(tt.args.inputStr); got != tt.want {
+				t.Errorf("ToSnakeCaseAllCap() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Benchmark_ConvertString2SnakeCaseAllCap(b *testing.B) {
+func Benchmark_ToSnakeCaseAllCap(b *testing.B) {
 	inputData := "user login count"
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertToSnakeCaseAllCap(inputData)
+		dechutil.ToSnakeCaseAllCap(inputData)
 	}
 }

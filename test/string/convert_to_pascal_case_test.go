@@ -6,7 +6,7 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func TestConvertString2PascalCase(t *testing.T) {
+func TestToPascalCase(t *testing.T) {
 	type args struct {
 		inputStr string
 	}
@@ -21,17 +21,17 @@ func TestConvertString2PascalCase(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertToPascalCase(tt.args.inputStr); got != tt.want {
-				t.Errorf("ConvertString2PascalCase() = %v, want %v", got, tt.want)
+			if got := dechutil.ToPascalCase(tt.args.inputStr); got != tt.want {
+				t.Errorf("ToPascalCase() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Benchmark_ConvertString2PascallCase(b *testing.B) {
+func Benchmark_ToPascallCase(b *testing.B) {
 	inputData := "user login count"
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertToPascalCase(inputData)
+		dechutil.ToPascalCase(inputData)
 	}
 }

@@ -16,8 +16,8 @@ func main() {
 	slice1 := []string{"a", "b", "c"}
 	slice2 := []int{1, 2, 3}
 
-	arr1 := dechutil.ConvertAnySliceToSliceInf(slice1)
-	arr2 := dechutil.ConvertAnySliceToSliceInf(slice2)
+	arr1 := dechutil.AnySliceToSliceInf(slice1)
+	arr2 := dechutil.AnySliceToSliceInf(slice2)
 
 	fmt.Printf("%T %+v\n", slice1, slice1)
 	fmt.Printf("%T %+v\n", arr1, arr1)

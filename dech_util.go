@@ -9,7 +9,7 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 02/04/2023 13:30"
+	return "DECH Util , Version : 1.0.0 , Last Build : 09/04/2023 12:00"
 }
 
 func TypeAndKindOfObject(inf interface{}) (string, string) {
@@ -24,8 +24,8 @@ func PrintSliceInf(data []interface{}) {
 	}
 }
 
-func PrintData(data interface{}) {
-	cv := ConvertAnySliceToSliceInf(data)
+func PrintInf(data interface{}) {
+	cv := AnySliceToSliceInf(data)
 	for _, v := range cv {
 		fmt.Printf("\n%#v\n", v)
 	}
@@ -78,7 +78,7 @@ func FormatCommaFloat(data float64, decimal int) string {
 	return result
 }
 
-func IsNull(data *string) bool {
+func IsNullString(data *string) bool {
 	result := false
 
 	if data == nil {

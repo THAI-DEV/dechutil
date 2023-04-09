@@ -6,7 +6,7 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func TestConvertSliceString2String(t *testing.T) {
+func TestSliceStringToString(t *testing.T) {
 	type args struct {
 		data        []string
 		wrapStr1    string
@@ -25,20 +25,20 @@ func TestConvertSliceString2String(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertSliceStringToString(tt.args.data, tt.args.wrapStr1, tt.args.wrapStr2, tt.args.saperateStr); got != tt.want {
-				t.Errorf("ConvertSliceString2String() = %v, want %v", got, tt.want)
+			if got := dechutil.SliceStringToString(tt.args.data, tt.args.wrapStr1, tt.args.wrapStr2, tt.args.saperateStr); got != tt.want {
+				t.Errorf("SliceStringToString() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Benchmark_ConvertSliceString2String(b *testing.B) {
+func Benchmark_SliceStringToString(b *testing.B) {
 	inputData1 := []string{"a", "b", "c"}
 	inputData2 := "'"
 	inputData3 := "'"
 	inputData4 := ","
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertSliceStringToString(inputData1, inputData2, inputData3, inputData4)
+		dechutil.SliceStringToString(inputData1, inputData2, inputData3, inputData4)
 	}
 }

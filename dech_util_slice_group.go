@@ -1,19 +1,18 @@
 package dechutil
 
 import (
-	"math"
 	"strings"
 )
 
-func SeparateGroupSlice(inputSlice []string, groupNum int, isAsymmetryMember bool) []string {
+func ArrangGroupAsSeparate(inputSlice []string, groupNum int, isAsymmetryMember bool) []string {
 	/*
 		input := []string{"01", "02", "03", "04", "05", "06", "07", "08", "09"}
 
-		output := SeparateGroupSlice(input, 2, true)
+		output := ArrangGroupAsSeparate(input, 2, true)
 		Result : group1 = 01 , 02 , 03 , 04 , 05
 				 group2 = 06 , 07 , 08 , 09
 
-		output := SeparateGroupSlice(input, 2, false)
+		output := ArrangGroupAsSeparate(input, 2, false)
 		Result : group1 = 01 , 02 , 03 , 04 , 09
 				 group2 = 05 , 06 , 07 , 08
 
@@ -91,11 +90,11 @@ func SeparateGroupSlice(inputSlice []string, groupNum int, isAsymmetryMember boo
 	return resultList
 }
 
-func DistributeGroupSlice(inputSlice []string, groupNum int) []string {
+func ArrangGroupAsDistribute(inputSlice []string, groupNum int) []string {
 	/*
 		input := []string{"01", "02", "03", "04", "05", "06", "07", "08", "09"}
 
-		output := DistributeGroupSlice(input, 2)
+		output := ArrangGroupAsDistribute(input, 2)
 		Result : group1 = 01 , 03 , 05 , 07 , 09
 				 group2 = 02 , 04 , 06 , 08
 	*/
@@ -131,43 +130,6 @@ func DistributeGroupSlice(inputSlice []string, groupNum int) []string {
 	return resultList
 }
 
-func ComputeIndexGroupSlice(numLen int, numStep int) [][]int {
-	/*
-		input := []int{1,2,3,4,5,6,7,8,9,10}
-
-		info := ComputeIndexGroupSlice(len(input), 6)
-		for i := 0; i < len(info); i++ {
-			beginInd := info[i][0]
-			endInd := info[i][1]
-			data := input[beginInd:endInd]
-			fmt.Println(data)
-		}
-
-		output
-			[1 2 3 4 5 6]
-			[7 8 9 10]
-	*/
-	f := float64(numLen) / float64(numStep)
-	f = math.Ceil(f)
-	numRow := int(f)
-
-	result := [][]int{}
-	var a = [2]int{0, 0}
-	beginInd := 0
-	endInd := 0
-	for i := 0; i < numRow; i++ {
-		factor := i * numStep
-		a[0] = beginInd + factor
-		a[1] = endInd + numStep + factor
-		if a[1] > numLen {
-			a[1] = numLen
-		}
-		result = append(result, []int{a[0], a[1]})
-	}
-
-	return result
-}
-
 func convertStringParamToSlice(strParam string,
 	delimiter string) []string {
 	/*
@@ -197,3 +159,40 @@ func convertStringParamToSlice(strParam string,
 
 	return resultList
 }
+
+// func computeIndexGroupSlice(numLen int, numStep int) [][]int {
+// 	/*
+// 		input := []int{1,2,3,4,5,6,7,8,9,10}
+
+// 		info := ComputeIndexGroupSlice(len(input), 6)
+// 		for i := 0; i < len(info); i++ {
+// 			beginInd := info[i][0]
+// 			endInd := info[i][1]
+// 			data := input[beginInd:endInd]
+// 			fmt.Println(data)
+// 		}
+
+// 		output
+// 			[1 2 3 4 5 6]
+// 			[7 8 9 10]
+// 	*/
+// 	f := float64(numLen) / float64(numStep)
+// 	f = math.Ceil(f)
+// 	numRow := int(f)
+
+// 	result := [][]int{}
+// 	var a = [2]int{0, 0}
+// 	beginInd := 0
+// 	endInd := 0
+// 	for i := 0; i < numRow; i++ {
+// 		factor := i * numStep
+// 		a[0] = beginInd + factor
+// 		a[1] = endInd + numStep + factor
+// 		if a[1] > numLen {
+// 			a[1] = numLen
+// 		}
+// 		result = append(result, []int{a[0], a[1]})
+// 	}
+
+// 	return result
+// }

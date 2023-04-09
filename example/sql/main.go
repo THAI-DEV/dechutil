@@ -12,8 +12,8 @@ func main() {
 	s2 := dechutil.SqlNullString(false, "xxx") //? {String:xxx Valid:true}
 	s3 := dechutil.SqlNullStringRef(nil)       //? {String: Valid:false}
 
-	s4 := dechutil.StringSqlNullValue(s1) //? <nil>
-	s5 := dechutil.StringSqlNullValue(s2) //? xxx
+	s4 := dechutil.SqlNullValueString(s1) //? <nil>
+	s5 := dechutil.SqlNullValueString(s2) //? xxx
 
 	fmt.Printf("%+v\n", s1)
 	fmt.Printf("%+v\n", s2)

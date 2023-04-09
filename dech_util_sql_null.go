@@ -185,7 +185,7 @@ func SqlNullByteRef(val *byte) sql.NullByte {
 
 //-------------------------------------------------------------------------------
 
-func StringSqlNullValue(val sql.NullString) *string {
+func SqlNullValueString(val sql.NullString) *string {
 	if val.Valid {
 		return &val.String
 	} else {
@@ -193,7 +193,7 @@ func StringSqlNullValue(val sql.NullString) *string {
 	}
 }
 
-func Int16SqlNullValue(val sql.NullInt16) *int16 {
+func SqlNullValueInt16(val sql.NullInt16) *int16 {
 	if val.Valid {
 		return &val.Int16
 	} else {
@@ -201,7 +201,7 @@ func Int16SqlNullValue(val sql.NullInt16) *int16 {
 	}
 }
 
-func Int32SqlNullValue(val sql.NullInt32) *int32 {
+func SqlNullValueInt32(val sql.NullInt32) *int32 {
 	if val.Valid {
 		return &val.Int32
 	} else {
@@ -209,7 +209,7 @@ func Int32SqlNullValue(val sql.NullInt32) *int32 {
 	}
 }
 
-func Int64SqlNullValue(val sql.NullInt64) *int64 {
+func SqlNullValueInt64(val sql.NullInt64) *int64 {
 	if val.Valid {
 		return &val.Int64
 	} else {
@@ -217,7 +217,7 @@ func Int64SqlNullValue(val sql.NullInt64) *int64 {
 	}
 }
 
-func TimeSqlNullValue(val sql.NullTime) *time.Time {
+func SqlNullValueTime(val sql.NullTime) *time.Time {
 	if val.Valid {
 		return &val.Time
 	} else {
@@ -225,7 +225,7 @@ func TimeSqlNullValue(val sql.NullTime) *time.Time {
 	}
 }
 
-func Float64SqlNullValue(val sql.NullFloat64) *float64 {
+func SqlNullValueFloat64(val sql.NullFloat64) *float64 {
 	if val.Valid {
 		return &val.Float64
 	} else {
@@ -233,7 +233,7 @@ func Float64SqlNullValue(val sql.NullFloat64) *float64 {
 	}
 }
 
-func BoolSqlNullValue(val sql.NullBool) *bool {
+func SqlNullValueBool(val sql.NullBool) *bool {
 	if val.Valid {
 		return &val.Bool
 	} else {
@@ -241,7 +241,7 @@ func BoolSqlNullValue(val sql.NullBool) *bool {
 	}
 }
 
-func ByteSqlNullValue(val sql.NullByte) *byte {
+func SqlNullValueByte(val sql.NullByte) *byte {
 	if val.Valid {
 		return &val.Byte
 	} else {

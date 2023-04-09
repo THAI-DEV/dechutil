@@ -6,7 +6,7 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func TestConvertNullString2String(t *testing.T) {
+func TestNullStringToString(t *testing.T) {
 	val := "str"
 	type args struct {
 		data       *string
@@ -23,16 +23,16 @@ func TestConvertNullString2String(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertNullStringToString(tt.args.data, tt.args.nullStrVal); got != tt.want {
-				t.Errorf("ConvertNullString2String() = %v, want %v", got, tt.want)
+			if got := dechutil.NullStringToString(tt.args.data, tt.args.nullStrVal); got != tt.want {
+				t.Errorf("NullStringToString() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Benchmark_ConvertNullString2String(b *testing.B) {
+func Benchmark_ConvertNullStringToString(b *testing.B) {
 	var inputData = "xxxx"
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertNullStringToString(&inputData, "null")
+		dechutil.NullStringToString(&inputData, "null")
 	}
 }

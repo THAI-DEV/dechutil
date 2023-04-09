@@ -6,7 +6,11 @@ import (
 	"strconv"
 )
 
-func ConvertAnyValueToString(inf interface{}, decimal int) string {
+func AnyValueToPointerValue[T any](value T) *T {
+	return &value
+}
+
+func AnyValueToString(inf interface{}, decimal int) string {
 	str, _ := TypeAndKindOfObject(inf)
 
 	if str == "string" {
@@ -55,7 +59,7 @@ func ConvertAnyValueToString(inf interface{}, decimal int) string {
 }
 
 // * Convert a slice or array of a specific type to array of interface{}
-func ConvertAnySliceToSliceInf(input interface{}) []interface{} {
+func AnySliceToSliceInf(input interface{}) []interface{} {
 	val := reflect.ValueOf(input)
 	// There is no need to check, we want to panic if it's not slice or array
 	inf := make([]interface{}, val.Len())
@@ -65,7 +69,7 @@ func ConvertAnySliceToSliceInf(input interface{}) []interface{} {
 	return inf
 }
 
-func ConvertNullStringToString(data *string, nullStrVal string) string {
+func NullStringToString(data *string, nullStrVal string) string {
 	result := nullStrVal
 	if data != nil {
 		result = *data
@@ -76,7 +80,7 @@ func ConvertNullStringToString(data *string, nullStrVal string) string {
 
 // * input : "abc", "xxxx" output : abc false
 // * input :"null val", "null val" output : <nil> true
-func ConvertString2NullString(data string, defindStrVal string) (*string, bool) {
+func StringToNullString(data string, defindStrVal string) (*string, bool) {
 	var result *string
 	var isNull bool
 
@@ -91,7 +95,7 @@ func ConvertString2NullString(data string, defindStrVal string) (*string, bool) 
 	return result, isNull
 }
 
-func ConvertStringToFloat(strValue string) float64 {
+func StringToFloat(strValue string) float64 {
 	result, err := strconv.ParseFloat(strValue, 64)
 	if err != nil {
 		fmt.Println(err)
@@ -100,15 +104,11 @@ func ConvertStringToFloat(strValue string) float64 {
 	return result
 }
 
-func ConvertStringToInt(strValue string) int {
+func StringToInt(strValue string) int {
 	result, err := strconv.Atoi(strValue)
 	if err != nil {
 		fmt.Println(err)
 	}
 
 	return result
-}
-
-func ConvertAnyValueToPointerValue[T any](value T) *T {
-	return &value
 }

@@ -7,7 +7,7 @@ import (
 //* Ref : https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841
 
 // User
-func ConvertToUpperCap(input string) string {
+func ToUpperCap(input string) string {
 	str := strings.ToLower(input)
 	strSlice := strings.Split(str, "")
 
@@ -24,7 +24,7 @@ func ConvertToUpperCap(input string) string {
 }
 
 // user
-func ConvertToLowerCap(input string) string {
+func ToLowerCap(input string) string {
 	str := strings.ToLower(input)
 	strSlice := strings.Split(str, "")
 
@@ -41,22 +41,22 @@ func ConvertToLowerCap(input string) string {
 }
 
 // UserLoginCount
-func ConvertToPascalCase(inputStr string) string {
+func ToPascalCase(inputStr string) string {
 	str := strings.ReplaceAll(inputStr, "_", " ")
 
 	strSlice := strings.Split(str, " ")
 
 	result := ""
 	for _, v := range strSlice {
-		result = result + ConvertToUpperCap(v)
+		result = result + ToUpperCap(v)
 	}
 
 	return result
 }
 
 // userLoginCount
-func ConvertToCamelCase(inputStr string) string {
-	result := ConvertToPascalCase(inputStr)
+func ToCamelCase(inputStr string) string {
+	result := ToPascalCase(inputStr)
 
 	strSlice2 := strings.Split(result, "")
 	result = ""
@@ -73,7 +73,7 @@ func ConvertToCamelCase(inputStr string) string {
 }
 
 // user_login_count
-func ConvertToSnakeCase(inputStr string) string {
+func ToSnakeCase(inputStr string) string {
 	str := strings.ToLower(inputStr)
 	result := strings.ReplaceAll(str, " ", "_")
 
@@ -81,7 +81,7 @@ func ConvertToSnakeCase(inputStr string) string {
 }
 
 // USER_LOGIN_COUNT
-func ConvertToSnakeCaseAllCap(inputStr string) string {
+func ToSnakeCaseAllCap(inputStr string) string {
 	str := strings.ToUpper(inputStr)
 	result := strings.ReplaceAll(str, " ", "_")
 
@@ -89,7 +89,7 @@ func ConvertToSnakeCaseAllCap(inputStr string) string {
 }
 
 // user-login-count
-func ConvertToKebabCase(inputStr string) string {
+func ToKebabCase(inputStr string) string {
 	str := strings.ToLower(inputStr)
 	result := strings.ReplaceAll(str, " ", "-")
 

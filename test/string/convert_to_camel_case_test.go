@@ -6,7 +6,7 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func TestConvertString2CamelCase(t *testing.T) {
+func TestToCamelCase(t *testing.T) {
 	type args struct {
 		inputStr string
 	}
@@ -23,17 +23,17 @@ func TestConvertString2CamelCase(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := dechutil.ConvertToCamelCase(tt.args.inputStr); got != tt.want {
-				t.Errorf("ConvertString2CamelCase() = %v, want %v", got, tt.want)
+			if got := dechutil.ToCamelCase(tt.args.inputStr); got != tt.want {
+				t.Errorf("ToCamelCase() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Benchmark_ConvertString2CamelCase(b *testing.B) {
+func Benchmark_ToCamelCase(b *testing.B) {
 	inputData := "user login count"
 
 	for i := 0; i < b.N; i++ {
-		dechutil.ConvertToCamelCase(inputData)
+		dechutil.ToCamelCase(inputData)
 	}
 }

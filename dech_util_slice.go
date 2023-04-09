@@ -28,7 +28,7 @@ func removeElement[T sliceInf](s []T, i int) ([]T, error) {
 }
 
 // * input : []string{"a",""b},"'","'",","  output : 'a','b'
-func ConvertSliceStringToString(data []string, wrapStr1 string, wrapStr2 string, saperateStr string) string {
+func SliceStringToString(data []string, wrapStr1 string, wrapStr2 string, saperateStr string) string {
 	result := ""
 	for i, v := range data {
 		result = result + wrapStr1 + v + wrapStr2

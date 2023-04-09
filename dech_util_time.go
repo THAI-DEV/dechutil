@@ -6,41 +6,41 @@ import (
 )
 
 // * YYYY-MM-DD hh:mm:ss.ffffff
-func ConverTimeToStringDateTimeFull(timeVal time.Time) string {
+func TimeToStringDateTimeFull(timeVal time.Time) string {
 	return timeVal.Format("2006-01-02 15:04:05.000000")
 }
 
 // * YYYY-MM-DD hh:mm:ss
-func ConverTimeToStringDateTime(timeVal time.Time) string {
+func TimeToStringDateTime(timeVal time.Time) string {
 	return timeVal.Format("2006-01-02 15:04:05")
 }
 
 // * YYYY-MM-DD
-func ConverTimeToStringDate(timeVal time.Time) string {
+func TimeToStringDate(timeVal time.Time) string {
 	return timeVal.Format("2006-01-02")
 }
 
 // * hh:mm:ss
-func ConverTimeToStringTime(timeVal time.Time) string {
+func TimeToStringTime(timeVal time.Time) string {
 	return timeVal.Format("15:04:05")
 }
 
 // * hh:mm:ss.ffffff
-func ConverTimeToStringTimeFull(timeVal time.Time) string {
+func TimeToStringTimeFull(timeVal time.Time) string {
 	return timeVal.Format("15:04:05.000000")
 }
 
 // * DD/MM/YYYY hh:mm:ss
-func ConverTimeToShowStringDateTime(timVal time.Time) string {
+func TimeToShowStringDateTime(timVal time.Time) string {
 	return timVal.Format("02/01/2006 15:04:05")
 }
 
 // * DD/MM/YYYY
-func ConverTimeToShowStringDate(curr time.Time) string {
+func TimeToShowStringDate(curr time.Time) string {
 	return curr.Format("02/01/2006")
 }
 
-func ConverttSecToMinute(sec int) float64 {
+func UnitSecToMinute(sec int) float64 {
 	min := float64(sec) / 60
 	return min
 }
