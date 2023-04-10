@@ -51,6 +51,15 @@ func ExampleRemoveSliceOnTop() {
 	// [d e]
 }
 
+func ExampleRemoveSliceOnButtom() {
+	got1 := dechutil.RemoveSliceOnButtom([]string{"a", "b", "c", "d", "e"}, 2)
+
+	fmt.Println(got1)
+
+	// Output:
+	// [a b]
+}
+
 func ExampleSliceStringToString() {
 	got1 := dechutil.SliceStringToString([]string{"a", "b", "c"}, "{", "}", "|")
 

@@ -21,6 +21,18 @@ func RemoveSliceOnTop[T sliceInf](result []T, keepMax int) []T {
 	return result
 }
 
+func RemoveSliceOnButtom[T sliceInf](result []T, keepMax int) []T {
+	for {
+		if len(result) > keepMax {
+			result, _ = removeElement(result, len(result)-1)
+		} else {
+			break
+		}
+	}
+
+	return result
+}
+
 func removeElement[T sliceInf](s []T, i int) ([]T, error) {
 	// perform bounds checking first to prevent a panic!
 	if i >= len(s) || i < 0 {
