@@ -68,3 +68,27 @@ func ExampleSliceStringToString() {
 	// Output:
 	// {a}|{b}|{c}
 }
+
+func ExamplePrintSliceOfSameType() {
+	dechutil.PrintSliceOfSameType([]string{"a", "b"})
+
+	// Output:
+	// "a"
+	//
+	// "b"
+}
+
+func ExamplePrintSliceOfAnyType() {
+	var data []interface{}
+	// var data []any
+
+	data = append(data, 1)
+	data = append(data, "a")
+
+	dechutil.PrintSliceOfAnyType(data)
+
+	// Output:
+	// 1
+	//
+	// "a"
+}

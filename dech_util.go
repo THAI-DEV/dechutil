@@ -18,13 +18,13 @@ func TypeAndKindOfObject(inf interface{}) (string, string) {
 	return s1, s2
 }
 
-func PrintSliceInf(data []interface{}) {
+func PrintSliceOfAnyType(data []interface{}) {
 	for _, v := range data {
 		fmt.Printf("\n%#v\n", v)
 	}
 }
 
-func PrintInf(data interface{}) {
+func PrintSliceOfSameType(data interface{}) {
 	cv := AnySliceToSliceInf(data)
 	for _, v := range cv {
 		fmt.Printf("\n%#v\n", v)
