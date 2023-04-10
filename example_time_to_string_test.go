@@ -83,3 +83,15 @@ func ExampleTimeToStringTimeFull() {
 	// Output:
 	// 17:30:45.123456
 }
+
+func ExampleTimeToStringFormat() {
+	formatTime := "20060102 150405"
+	t, _ := time.Parse(formatTime, "20221225 173045")
+
+	got1 := dechutil.TimeToStringFormat(t, formatTime)
+
+	fmt.Println(got1)
+
+	// Output:
+	// 20221225 173045
+}

@@ -40,6 +40,11 @@ func TimeToShowStringDate(curr time.Time) string {
 	return curr.Format("02/01/2006")
 }
 
+// 2006-01-02 15:04:05.000000
+func TimeToStringFormat(timeVal time.Time, format string) string {
+	return timeVal.Format(format)
+}
+
 func UnitSecToMinute(sec int) float64 {
 	min := float64(sec) / 60
 	return min
