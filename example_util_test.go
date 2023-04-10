@@ -108,3 +108,23 @@ func ExampleAnyValueToPointerValue() {
 	// 20.5
 	// true
 }
+func ExampleTypeAndKindOfObject() {
+	got11, got12 := dechutil.TypeAndKindOfObject("test")
+	got21, got22 := dechutil.TypeAndKindOfObject(169)
+	got31, got32 := dechutil.TypeAndKindOfObject(5.13)
+	got41, got42 := dechutil.TypeAndKindOfObject(true)
+	got51, got52 := dechutil.TypeAndKindOfObject([]string{})
+
+	fmt.Println(got11, got12)
+	fmt.Println(got21, got22)
+	fmt.Println(got31, got32)
+	fmt.Println(got41, got42)
+	fmt.Println(got51, got52)
+
+	// Output:
+	// string string
+	// int int
+	// float64 float64
+	// bool bool
+	// []string slice
+}
