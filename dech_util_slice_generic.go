@@ -70,3 +70,32 @@ func ReverseSlice[T sliceInf](input []T) []T {
 
 	return output
 }
+
+func FindIndexSlice[T sliceInf](data []T, findVal T) int {
+	for i, v := range data {
+		if v == findVal {
+			return i
+		}
+	}
+	return -1
+}
+
+func IsDuplicateSlice[T sliceInf](data []T) bool {
+	for i, v := range data {
+		ind := findNextIndexInSliceByVal(data, v, i+1)
+		if ind != -1 { //found
+			return true
+		}
+	}
+
+	return false
+}
+
+func findNextIndexInSliceByVal[T sliceInf](data []T, findVal T, startInd int) int {
+	for i := startInd; i < len(data); i++ {
+		if data[i] == findVal {
+			return i
+		}
+	}
+	return -1
+}

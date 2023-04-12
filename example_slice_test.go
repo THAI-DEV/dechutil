@@ -92,3 +92,63 @@ func ExamplePrintSliceOfAnyType() {
 	//
 	// "a"
 }
+
+func ExampleFindIndexSlice() {
+	dataStr := []string{"c", "a", "z", "x"}
+	dataInt := []int{11, 20, 111, 2}
+	dataFloat := []float64{11.50, 20.4, 111.43, 2.0}
+
+	got1 := dechutil.FindIndexSlice(dataStr, "z")
+	got2 := dechutil.FindIndexSlice(dataStr, "p")
+	got3 := dechutil.FindIndexSlice(dataInt, 2)
+	got4 := dechutil.FindIndexSlice(dataFloat, 111.43)
+
+	fmt.Println(dechutil.AnyToString(got1, 0))
+	fmt.Println(dechutil.AnyToString(got2, 0))
+	fmt.Println(dechutil.AnyToString(got3, 0))
+	fmt.Println(dechutil.AnyToString(got4, 0))
+
+	// Output:
+	// 2
+	// -1
+	// 3
+	// 2
+}
+
+func ExampleIsDuplicateSlice() {
+	dataStr1 := []string{"c", "a", "z", "x"}
+	dataInt1 := []int{11, 20, 111, 2}
+	dataFloat1 := []float64{11.50, 20.4, 111.43, 2.0}
+
+	dataStr2 := []string{"c", "a", "c", "x"}
+	dataInt2 := []int{11, 20, 111, 20}
+	dataFloat2 := []float64{11.50, 20.4, 111.43, 11.50}
+
+	got1 := dechutil.IsDuplicateSlice(dataStr1)
+	got2 := dechutil.IsDuplicateSlice(dataInt1)
+	got3 := dechutil.IsDuplicateSlice(dataFloat1)
+
+	got4 := dechutil.IsDuplicateSlice(dataStr2)
+	got5 := dechutil.IsDuplicateSlice(dataInt2)
+	got6 := dechutil.IsDuplicateSlice(dataFloat2)
+
+	fmt.Println(got1)
+	fmt.Println(got2)
+	fmt.Println(got3)
+	fmt.Println(got4)
+	fmt.Println(got5)
+	fmt.Println(got6)
+
+	// Output:
+	// false
+	// false
+	// false
+	// true
+	// true
+	// true
+
+	for i, v := range []string{} {
+		_ = v[i]
+
+	}
+}
