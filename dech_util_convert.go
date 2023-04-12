@@ -6,11 +6,11 @@ import (
 	"strconv"
 )
 
-func AnyValueToPointerValue[T any](value T) *T {
+func AnyToPointer[T any](value T) *T {
 	return &value
 }
 
-func AnyValueToString(inf interface{}, decimal int) string {
+func AnyToString(inf interface{}, decimal int) string {
 	str, _ := TypeAndKindOfObject(inf)
 
 	if str == "string" {

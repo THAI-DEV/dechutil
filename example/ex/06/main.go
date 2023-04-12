@@ -15,9 +15,9 @@ func main() {
 	s := "xxx"
 	str4 = &s
 
-	str5 := dechutil.AnyValueToPointerValue("xxx")
+	str5 := dechutil.AnyToPointer("xxx")
 
-	str6 := dechutil.AnyValueToPointerValue(70)
+	str6 := dechutil.AnyToPointer(70)
 
 	fmt.Println("--------------------------------------")
 	fmt.Println("s1", dechutil.IsNullString(&str1), str1)

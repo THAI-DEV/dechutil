@@ -60,7 +60,7 @@ func ExampleIsNullString() {
 	s := "xxx"
 	str4 = &s
 
-	str5 := dechutil.AnyValueToPointerValue("xxx")
+	str5 := dechutil.AnyToPointer("xxx")
 
 	got1 := dechutil.IsNullString(&str1)
 	got2 := dechutil.IsNullString(&str2)
@@ -82,16 +82,16 @@ func ExampleIsNullString() {
 	// false
 }
 
-func ExampleAnyValueToPointerValue() {
-	got1 := dechutil.AnyValueToPointerValue("xxx")
-	got2 := dechutil.AnyValueToPointerValue("")
+func ExampleAnyToPointer() {
+	got1 := dechutil.AnyToPointer("xxx")
+	got2 := dechutil.AnyToPointer("")
 
 	var nulStr *string
-	got3 := dechutil.AnyValueToPointerValue(nulStr)
+	got3 := dechutil.AnyToPointer(nulStr)
 
-	got4 := dechutil.AnyValueToPointerValue(7)
-	got5 := dechutil.AnyValueToPointerValue(20.5)
-	got6 := dechutil.AnyValueToPointerValue(true)
+	got4 := dechutil.AnyToPointer(7)
+	got5 := dechutil.AnyToPointer(20.5)
+	got6 := dechutil.AnyToPointer(true)
 
 	fmt.Println(*got1)
 	fmt.Println(*got2)
