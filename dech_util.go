@@ -9,7 +9,7 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 12/04/2023 15:15"
+	return "DECH Util , Version : 1.0.0 , Last Build : 18/04/2023 22:00"
 }
 
 func TypeAndKindOfObject(inf interface{}) (string, string) {
