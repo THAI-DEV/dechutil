@@ -1,8 +1,15 @@
 package dechutil
 
 import (
+	"strconv"
 	"strings"
 )
+
+// Flow arrang group for general slice
+// Step 1 : ConvertAnySliceToIndexString
+// Step 2 : Arrang group as ...
+// Step 3 : TransformGroupDimension
+// Step 4 : Loop slice to use index string
 
 func ArrangGroupAsSeparate(inputSlice []string, groupNum int, isAsymmetryMember bool) []string {
 	/*
@@ -128,6 +135,29 @@ func ArrangGroupAsDistribute(inputSlice []string, groupNum int) []string {
 	}
 
 	return resultList
+}
+
+// one dimension slice to two dimension slice
+func TransformGroupDimension(inputSlice []string) [][]string {
+	result := [][]string{}
+
+	for _, v := range inputSlice {
+		rowData := strings.Split(v, ",")
+		result = append(result, rowData)
+	}
+
+	return result
+}
+
+// convert data slice to index string slice
+func ConvertAnySliceToIndexString[T sliceInf](inputSlice []T) []string {
+	result := []string{}
+
+	for i := range inputSlice {
+		result = append(result, strconv.Itoa(i))
+	}
+
+	return result
 }
 
 func convertStringParamToSlice(strParam string,
