@@ -152,3 +152,18 @@ func ExampleIsDuplicateSlice() {
 
 	}
 }
+
+func ExampleShuffleSlice() {
+	data1 := []string{"a", "b", "c", "d", "e", "f"}
+	data2 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	got1 := dechutil.ShuffleSlice(data1)
+	fmt.Println(got1[0] != data1[0])
+
+	got2 := dechutil.ShuffleSlice(data2)
+	fmt.Println(got2[0] != data2[0])
+
+	// Output:
+	// true
+	// true
+}

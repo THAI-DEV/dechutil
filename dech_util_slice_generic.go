@@ -1,6 +1,9 @@
 package dechutil
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+)
 
 type sliceInf interface {
 	int | int8 | int16 | int32 | int64 |
@@ -89,6 +92,17 @@ func IsDuplicateSlice[T sliceInf](data []T) bool {
 	}
 
 	return false
+}
+
+func ShuffleSlice[T sliceInf](data []T) []T {
+	result := make([]T, len(data))
+
+	perm := rand.Perm(len(data))
+	for i, v := range perm {
+		result[v] = data[i]
+	}
+
+	return result
 }
 
 func findNextIndexInSliceByVal[T sliceInf](data []T, findVal T, startInd int) int {
