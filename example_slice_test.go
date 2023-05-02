@@ -167,3 +167,20 @@ func ExampleShuffleSlice() {
 	// true
 	// true
 }
+
+func ExampleCloneSlice() {
+	data1 := []string{"a", "b", "c", "d", "e", "f"}
+	data2 := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	got1 := dechutil.CloneSlice(data1)
+	data1[0] = "aa"
+	fmt.Println(got1[0], data1[0])
+
+	got2 := dechutil.CloneSlice(data2)
+	data2[0] = 10
+	fmt.Println(got2[0], data2[0])
+
+	// Output:
+	// a aa
+	// 1 10
+}
