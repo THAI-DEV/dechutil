@@ -184,3 +184,49 @@ func ExampleCloneSlice() {
 	// a aa
 	// 1 10
 }
+
+func ExampleCombineSameSlice() {
+	data1 := []string{"a", "b", "c", "d", "e", "b"}
+	data2 := []string{"b", "aa", "cc", "d", "x", "z"}
+
+	got1 := dechutil.CombineSameSlice(data1, data2)
+	for _, v := range got1 {
+		fmt.Println(v)
+	}
+
+	// Output:
+	// b
+	// d
+	// b
+}
+
+func ExampleCombineDiffSlice() {
+	data1 := []string{"a", "b", "c", "d", "e", "b"}
+	data2 := []string{"b", "aa", "cc", "d", "x", "z"}
+
+	got1 := dechutil.CombineDiffSlice(data1, data2)
+	for _, v := range got1 {
+		fmt.Println(v)
+	}
+
+	// Output:
+	// a
+	// c
+	// e
+}
+
+func ExampleCombineUniqSlice() {
+	data1 := []string{"a", "b", "c", "d", "e", "b"}
+
+	got1 := dechutil.CombineUniqSlice(data1)
+	for _, v := range got1 {
+		fmt.Println(v)
+	}
+
+	// Output:
+	// a
+	// b
+	// c
+	// d
+	// e
+}

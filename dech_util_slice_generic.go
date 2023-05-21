@@ -112,6 +112,45 @@ func CloneSlice[T sliceInf](data []T) []T {
 	return result
 }
 
+func CombineSameSlice[T sliceInf](sourceData []T, compareData []T) []T {
+	result := []T{}
+
+	for _, v := range sourceData {
+		i := FindIndexSlice(compareData, v)
+		if i != -1 {
+			result = append(result, v)
+		}
+	}
+
+	return result
+}
+
+func CombineDiffSlice[T sliceInf](sourceData []T, compareData []T) []T {
+	result := []T{}
+
+	for _, v := range sourceData {
+		i := FindIndexSlice(compareData, v)
+		if i == -1 {
+			result = append(result, v)
+		}
+	}
+
+	return result
+}
+
+func CombineUniqSlice[T sliceInf](sourceData []T) []T {
+	result := []T{}
+
+	for _, v := range sourceData {
+		i := FindIndexSlice(result, v)
+		if i == -1 {
+			result = append(result, v)
+		}
+	}
+
+	return result
+}
+
 func findNextIndexInSliceByVal[T sliceInf](data []T, findVal T, startInd int) int {
 	for i := startInd; i < len(data); i++ {
 		if data[i] == findVal {
