@@ -102,19 +102,19 @@ func CreateFolderPath(Path string) error {
 	return err
 }
 
-func WriteJsonFile(createFolderName string, fullFileName string, dataJson any) {
+func WriteJsonFile(createFolderName string, fileName string, dataJson any) {
 	if createFolderName != "" {
 		CreateFolderPath(createFolderName)
 	}
 
 	data, err := json.MarshalIndent(dataJson, "", "  ")
 	if err != nil {
-		fmt.Printf("%s\n", err)
+		fmt.Println("Error:", err)
 	}
 
-	err = os.WriteFile(fullFileName, data, 0644)
+	err = os.WriteFile(fileName, data, 0644)
 	if err != nil {
-		fmt.Printf("%s\n", err)
+		fmt.Println("Error:", err)
 		return
 	}
 }
@@ -122,23 +122,23 @@ func WriteJsonFile(createFolderName string, fullFileName string, dataJson any) {
 func ReadJsonFile(fileName string, refData any) {
 	plan, err := os.ReadFile(fileName)
 	if err != nil {
-		fmt.Printf("%s\n", err)
+		fmt.Println("Error:", err)
 	}
 
 	err = json.Unmarshal(plan, &refData)
 	if err != nil {
-		fmt.Printf("%s\n", err)
+		fmt.Println("Error:", err)
 	}
 }
 
-func WriteBinaryFile(createFolderName string, fullFileName string, data []byte) {
+func WriteBinaryFile(createFolderName string, fileName string, data []byte) {
 	if createFolderName != "" {
 		CreateFolderPath(createFolderName)
 	}
 
-	err := os.WriteFile(fullFileName, data, 0644)
+	err := os.WriteFile(fileName, data, 0644)
 	if err != nil {
-		fmt.Printf("%s\n", err)
+		fmt.Println("Error:", err)
 		return
 	}
 }
