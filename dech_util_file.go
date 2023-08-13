@@ -95,3 +95,8 @@ func MoveFile(fileName string, oldLocation string, newLocation string) {
 		fmt.Printf("%s\n", err)
 	}
 }
+
+func CreateFolderPath(Path string) error {
+	err := os.MkdirAll(Path, os.ModePerm)
+	return err
+}
