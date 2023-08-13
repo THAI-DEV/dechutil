@@ -1,6 +1,7 @@
 package dechutil
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"os"
@@ -99,4 +100,45 @@ func MoveFile(fileName string, oldLocation string, newLocation string) {
 func CreateFolderPath(Path string) error {
 	err := os.MkdirAll(Path, os.ModePerm)
 	return err
+}
+
+func WriteJsonFile(createFolderName string, fullFileName string, dataJson any) {
+	if createFolderName != "" {
+		CreateFolderPath(createFolderName)
+	}
+
+	data, err := json.MarshalIndent(dataJson, "", "  ")
+	if err != nil {
+		fmt.Printf("%s\n", err)
+	}
+
+	err = os.WriteFile(fullFileName, data, 0644)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		return
+	}
+}
+
+func ReadJsonFile(fileName string, refData any) {
+	plan, err := os.ReadFile(fileName)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+	}
+
+	err = json.Unmarshal(plan, &refData)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+	}
+}
+
+func WriteBinaryFile(createFolderName string, fullFileName string, data []byte) {
+	if createFolderName != "" {
+		CreateFolderPath(createFolderName)
+	}
+
+	err := os.WriteFile(fullFileName, data, 0644)
+	if err != nil {
+		fmt.Printf("%s\n", err)
+		return
+	}
 }
