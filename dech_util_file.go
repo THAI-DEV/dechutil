@@ -109,12 +109,12 @@ func WriteJsonFile(createFolderName string, fileName string, dataJson any) {
 
 	data, err := json.MarshalIndent(dataJson, "", "  ")
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Printf("%s\n", err)
 	}
 
 	err = os.WriteFile(fileName, data, 0644)
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Printf("%s\n", err)
 		return
 	}
 }
@@ -122,12 +122,12 @@ func WriteJsonFile(createFolderName string, fileName string, dataJson any) {
 func ReadJsonFile(fileName string, refData any) {
 	plan, err := os.ReadFile(fileName)
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Printf("%s\n", err)
 	}
 
 	err = json.Unmarshal(plan, &refData)
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Printf("%s\n", err)
 	}
 }
 
@@ -138,7 +138,7 @@ func WriteBinaryFile(createFolderName string, fileName string, data []byte) {
 
 	err := os.WriteFile(fileName, data, 0644)
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Printf("%s\n", err)
 		return
 	}
 }
