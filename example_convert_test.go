@@ -98,3 +98,14 @@ func ExampleStringToInt() {
 	// Output:
 	// 123
 }
+
+func ExampleStringToTime() {
+	got1 := dechutil.StringToTime("2022-12-25 17:30:45.000000", "2006-01-02 15:04:05.000000")
+
+	str1 := dechutil.TimeToStringDateTimeFull(got1)
+
+	fmt.Println(str1)
+
+	// Output:
+	// 2022-12-25 17:30:45.000000
+}

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"reflect"
 	"strconv"
+	"time"
 )
 
 func AnyToPointer[T any](value T) *T {
@@ -111,4 +112,13 @@ func StringToInt(strValue string) int {
 	}
 
 	return result
+}
+
+func StringToTime(strValue string, format string) time.Time {
+	dt, err := time.Parse(format, strValue)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return dt
 }
