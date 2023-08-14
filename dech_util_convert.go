@@ -122,3 +122,12 @@ func StringToTime(strValue string, format string) time.Time {
 
 	return dt
 }
+
+func StringToLocalTime(strValue string, format string) time.Time {
+	dt, err := time.ParseInLocation(format, strValue, time.Local)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	return dt
+}
