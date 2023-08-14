@@ -131,7 +131,7 @@ func ReadJsonFile(fileName string, refData any) {
 	}
 }
 
-func WriteBinaryFile(createFolderName string, fileName string, data []byte) {
+func WriteDataFile(createFolderName string, fileName string, data []byte) {
 	if createFolderName != "" {
 		CreateFolderPath(createFolderName)
 	}
