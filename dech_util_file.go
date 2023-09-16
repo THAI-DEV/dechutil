@@ -313,8 +313,8 @@ func uniformTime(t time.Time) time.Time {
 	loc, _ := time.LoadLocation("Local")
 	// rand.Seed(time.Now().UnixNano())
 	r := rand.New(rand.NewSource(time.Now().UnixNano()))
-	startYmdStr := fmt.Sprintf("%d-%d-%d 09:30:00", t.Year(), t.Month(), t.Day())
-	endYmdStr := fmt.Sprintf("%d-%d-%d 18:30:00", t.Year(), t.Month(), t.Day())
+	startYmdStr := fmt.Sprintf("%d-%d-%d 00:00:00", t.Year(), t.Month(), t.Day())
+	endYmdStr := fmt.Sprintf("%d-%d-%d 23:59:59", t.Year(), t.Month(), t.Day())
 
 	daySt, _ := time.ParseInLocation(abbrevTimeFormat, startYmdStr, loc)
 	dayEt, _ := time.ParseInLocation(abbrevTimeFormat, endYmdStr, loc)
