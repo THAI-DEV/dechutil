@@ -4,7 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/fs"
+	"log"
+	"math/rand"
 	"path/filepath"
+	"syscall"
+	"time"
 
 	"os"
 	"strings"
@@ -245,4 +249,80 @@ func ShowWalkInfo(fileInfoList []fs.FileInfo, pathList []string) {
 	for i, info := range fileInfoList {
 		fmt.Printf("No : %d | Name : %s | Path : %s | IsDir : %v | Size : %d | Mod Time : %v \n", i+1, info.Name(), pathList[i], info.IsDir(), info.Size(), info.ModTime())
 	}
+}
+
+// * Ex : ModifyFileTime(`/Temp/t/a.txt`, GetFileTime("2022-09-20 13:21:56"))
+func ModifyFileTime(filePath string, ftime syscall.Filetime) error {
+	fd, err := syscall.Open(filePath, os.O_RDWR, 0755)
+	if err != nil {
+		log.Println(filePath, err)
+	}
+
+	err = syscall.SetFileTime(fd, &ftime, &ftime, &ftime)
+	if err != nil {
+		log.Println(filePath, err)
+	}
+	syscall.Close(fd)
+
+	return err
+}
+
+func GetFileTime(dt string) syscall.Filetime {
+	longTimeFormat := "2006-01-02 15:04:05"
+
+	loc, _ := time.LoadLocation("Local")
+	st, err := time.ParseInLocation(longTimeFormat,
+		dt, loc)
+	if err != nil {
+		log.Println(err)
+	}
+
+	t, err := time.Parse(longTimeFormat, dt)
+	if err != nil {
+		log.Println(err)
+	}
+
+	t = t.Add(time.Second * 1)
+	dt2 := t.Format(longTimeFormat)
+
+	et, err := time.ParseInLocation(longTimeFormat,
+		dt2, loc)
+	if err != nil {
+		log.Println(err)
+	}
+
+	gapTimestamp := et.Unix() - st.Unix()
+
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	// rand.Seed(time.Now().UnixNano())
+
+	randGap := r.Int63n(gapTimestamp)
+
+	distTime := uniformTime(time.Unix(st.Unix()+randGap, 0))
+
+	ftime := syscall.NsecToFiletime(distTime.UnixNano())
+
+	return ftime
+}
+
+func uniformTime(t time.Time) time.Time {
+	abbrevTimeFormat := "2006-1-2 15:4:5"
+
+	loc, _ := time.LoadLocation("Local")
+	// rand.Seed(time.Now().UnixNano())
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	startYmdStr := fmt.Sprintf("%d-%d-%d 09:30:00", t.Year(), t.Month(), t.Day())
+	endYmdStr := fmt.Sprintf("%d-%d-%d 18:30:00", t.Year(), t.Month(), t.Day())
+
+	daySt, _ := time.ParseInLocation(abbrevTimeFormat, startYmdStr, loc)
+	dayEt, _ := time.ParseInLocation(abbrevTimeFormat, endYmdStr, loc)
+	dayGap := dayEt.Unix() - daySt.Unix()
+	randGap := r.Int63n(dayGap)
+
+	//fmt.Println(t, startYmdStr, daySt, dayEt, dayGap, randGap)
+
+	if t.Unix() < daySt.Unix() || t.Unix() > dayEt.Unix() {
+		return time.Unix(daySt.Unix()+randGap, 0)
+	}
+	return t
 }
