@@ -251,12 +251,14 @@ func ShowWalkInfo(fileInfoList []fs.FileInfo, pathList []string) {
 	}
 }
 
-// * Ex : ModifyFileTime(`/Temp/t/a.txt`, GetFileTime("2022-09-20 13:21:56"))
-func ModifyFileTime(filePath string, ftime syscall.Filetime) error {
+// * Ex : ModifyFileTime(`/Temp/t/a.txt`, "2022-09-20 13:21:56")
+func ModifyFileTime(filePath string, fileDateTime string) error {
 	fd, err := syscall.Open(filePath, os.O_RDWR, 0755)
 	if err != nil {
 		log.Println(filePath, err)
 	}
+
+	ftime := getFileTime(fileDateTime)
 
 	err = syscall.SetFileTime(fd, &ftime, &ftime, &ftime)
 	if err != nil {
@@ -267,7 +269,7 @@ func ModifyFileTime(filePath string, ftime syscall.Filetime) error {
 	return err
 }
 
-func GetFileTime(dt string) syscall.Filetime {
+func getFileTime(dt string) syscall.Filetime {
 	longTimeFormat := "2006-01-02 15:04:05"
 
 	loc, _ := time.LoadLocation("Local")
