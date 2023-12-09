@@ -64,7 +64,7 @@ func ElapseTime(milisDiff int64) string {
 	const monthInMillis = dayInMillis * 30
 
 	timeElapsed := [6]int{0, 0, 0, 0, 0, 0}
-	timeElapsedText := [6]string{"second", "minute", "hour", "'day", "week", "month"}
+	timeElapsedText := [6]string{"second", "minute", "hour", "day", "week", "month"}
 
 	timeElapsed[5] = int(toFix(milisDiff / monthInMillis)) // months
 	milisDiff = milisDiff % monthInMillis
@@ -102,6 +102,27 @@ func ElapseTime(milisDiff int64) string {
 	}
 
 	return formattedTime
+}
+
+func SecondTimeToUnitTime(secondTime uint64) (days uint64, hours uint64, minutes uint64, seconds uint64) {
+	const (
+		secondsPerMinute = 60
+		secondsPerHour   = 60 * secondsPerMinute
+		secondsPerDay    = 24 * secondsPerHour
+	)
+
+	days = secondTime / secondsPerDay
+	secondTime %= secondsPerDay
+
+	hours = secondTime / secondsPerHour
+	secondTime %= secondsPerHour
+
+	minutes = secondTime / secondsPerMinute
+	seconds = secondTime % secondsPerMinute
+
+	//fmt.Sprintf("%d day, %d hour, %d min, %d sec", days, hours, minutes, seconds)
+
+	return
 }
 
 func toFix(value int64) int {
