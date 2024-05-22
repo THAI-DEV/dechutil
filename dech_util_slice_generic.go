@@ -12,7 +12,7 @@ type sliceInf interface {
 		string | bool
 }
 
-func RemoveSliceOnTop[T sliceInf](result []T, keepMax int) []T {
+func RemoveSliceOnTop[T any](result []T, keepMax int) []T {
 	for {
 		if len(result) > keepMax {
 			result, _ = removeElement(result, 0)
@@ -24,7 +24,7 @@ func RemoveSliceOnTop[T sliceInf](result []T, keepMax int) []T {
 	return result
 }
 
-func RemoveSliceOnButtom[T sliceInf](result []T, keepMax int) []T {
+func RemoveSliceOnButtom[T any](result []T, keepMax int) []T {
 	for {
 		if len(result) > keepMax {
 			result, _ = removeElement(result, len(result)-1)
@@ -36,7 +36,7 @@ func RemoveSliceOnButtom[T sliceInf](result []T, keepMax int) []T {
 	return result
 }
 
-func removeElement[T sliceInf](s []T, i int) ([]T, error) {
+func removeElement[T any](s []T, i int) ([]T, error) {
 	// perform bounds checking first to prevent a panic!
 	if i >= len(s) || i < 0 {
 		return nil, fmt.Errorf("index is out of range. index is %d with slice length %d", i, len(s))
@@ -49,19 +49,19 @@ func removeElement[T sliceInf](s []T, i int) ([]T, error) {
 	return append(s[:i], s[i+1:]...), nil
 }
 
-func AppendSlice[T sliceInf](slice []T, val T) []T {
+func AppendSlice[T any](slice []T, val T) []T {
 	return append(slice, val)
 }
 
-func InsertSlice[T sliceInf](slice []T, val T, index int) []T {
+func InsertSlice[T any](slice []T, val T, index int) []T {
 	return append(slice[:index], append([]T{val}, slice[index:]...)...)
 }
 
-func RemoveSlice[T sliceInf](slice []T, index int) []T {
+func RemoveSlice[T any](slice []T, index int) []T {
 	return append(slice[:index], slice[index+1:]...)
 }
 
-func ReverseSlice[T sliceInf](input []T) []T {
+func ReverseSlice[T any](input []T) []T {
 	inputLen := len(input)
 	output := make([]T, inputLen)
 
@@ -94,7 +94,7 @@ func IsDuplicateSlice[T sliceInf](data []T) bool {
 	return false
 }
 
-func ShuffleSlice[T sliceInf](data []T) []T {
+func ShuffleSlice[T any](data []T) []T {
 	result := make([]T, len(data))
 
 	perm := rand.Perm(len(data))
@@ -105,7 +105,7 @@ func ShuffleSlice[T sliceInf](data []T) []T {
 	return result
 }
 
-func CloneSlice[T sliceInf](data []T) []T {
+func CloneSlice[T any](data []T) []T {
 	result := []T{}
 	result = append(result, data...)
 
