@@ -106,8 +106,8 @@ func ShuffleSlice[T any](data []T) []T {
 }
 
 func CloneSlice[T any](data []T) []T {
-	result := []T{}
-	result = append(result, data...)
+	result := make([]T, len(data))
+	copy(result, data)
 
 	return result
 }
