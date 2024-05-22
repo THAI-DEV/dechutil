@@ -6,11 +6,11 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
-func ExampleReplaceRuneAtIndex() {
-	data1 := "Hello World"
+const data = "Hello World"
 
-	got1 := dechutil.ReplaceRuneAtIndex(data1, 'X', 0)
-	got2 := dechutil.ReplaceRuneAtIndex(data1, 'w', 6)
+func ExampleReplaceRuneAtIndex() {
+	got1 := dechutil.ReplaceRuneAtIndex(data, 'X', 0)
+	got2 := dechutil.ReplaceRuneAtIndex(data, 'w', 6)
 
 	fmt.Println(got1)
 	fmt.Println(got2)
@@ -21,10 +21,8 @@ func ExampleReplaceRuneAtIndex() {
 }
 
 func ExampleReplaceStringAtIndex() {
-	data1 := "Hello World"
-
-	got1 := dechutil.ReplaceStringAtIndex(data1, "X", 0)
-	got2 := dechutil.ReplaceStringAtIndex(data1, "w", 6)
+	got1 := dechutil.ReplaceStringAtIndex(data, "X", 0)
+	got2 := dechutil.ReplaceStringAtIndex(data, "w", 6)
 
 	fmt.Println(got1)
 	fmt.Println(got2)
@@ -32,4 +30,19 @@ func ExampleReplaceStringAtIndex() {
 	// Output:
 	//Xello World
 	//Hello world
+}
+
+func ExampleReplaceByteAtIndex() {
+	got1 := dechutil.ReplaceByteAtIndex(data, 'X', 0)
+	got2 := dechutil.ReplaceByteAtIndex(data, 'w', 6)
+	got3 := dechutil.ReplaceByteAtIndex(data, "z"[0], 1)
+
+	fmt.Println(got1)
+	fmt.Println(got2)
+	fmt.Println(got3)
+
+	// Output:
+	//Xello World
+	//Hello world
+	//Hzllo World
 }
