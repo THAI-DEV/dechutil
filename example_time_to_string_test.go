@@ -7,8 +7,10 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
+const layoutDateTime = "2006-01-02 15:04:05.000000"
+
 func ExampleTimeToShowStringDate() {
-	t, _ := time.Parse("2006-01-02 15:04:05.000000", "2022-12-25 17:30:45.000000")
+	t, _ := time.Parse(layoutDateTime, "2022-12-25 17:31:45.000000")
 
 	got1 := dechutil.TimeToShowStringDate(t)
 
@@ -19,18 +21,18 @@ func ExampleTimeToShowStringDate() {
 }
 
 func ExampleTimeToShowStringDateTime() {
-	t, _ := time.Parse("2006-01-02 15:04:05.000000", "2022-12-25 17:30:45.000000")
+	t, _ := time.Parse(layoutDateTime, "2022-12-25 17:32:45.000000")
 
 	got1 := dechutil.TimeToShowStringDateTime(t)
 
 	fmt.Println(got1)
 
 	// Output:
-	// 25/12/2022 17:30:45
+	// 25/12/2022 17:32:45
 }
 
 func ExampleTimeToStringDate() {
-	t, _ := time.Parse("2006-01-02 15:04:05.000000", "2022-12-25 17:30:45.000000")
+	t, _ := time.Parse(layoutDateTime, "2022-12-25 17:33:45.000000")
 
 	got1 := dechutil.TimeToStringDate(t)
 
@@ -41,18 +43,18 @@ func ExampleTimeToStringDate() {
 }
 
 func ExampleTimeToStringDateTime() {
-	t, _ := time.Parse("2006-01-02 15:04:05.000000", "2022-12-25 17:30:45.000000")
+	t, _ := time.Parse(layoutDateTime, "2022-12-25 17:34:45.000000")
 
 	got1 := dechutil.TimeToStringDateTime(t)
 
 	fmt.Println(got1)
 
 	// Output:
-	// 2022-12-25 17:30:45
+	// 2022-12-25 17:34:45
 }
 
 func ExampleTimeToStringDateTimeFull() {
-	t, _ := time.Parse("2006-01-02 15:04:05.000000", "2022-12-25 17:30:45.123456")
+	t, _ := time.Parse(layoutDateTime, "2022-12-25 17:30:45.123456")
 
 	got1 := dechutil.TimeToStringDateTimeFull(t)
 
@@ -63,7 +65,7 @@ func ExampleTimeToStringDateTimeFull() {
 }
 
 func ExampleTimeToStringTime() {
-	t, _ := time.Parse("2006-01-02 15:04:05.000000", "2022-12-25 17:30:45.000000")
+	t, _ := time.Parse(layoutDateTime, "2022-12-25 17:30:45.000000")
 
 	got1 := dechutil.TimeToStringTime(t)
 
@@ -74,7 +76,7 @@ func ExampleTimeToStringTime() {
 }
 
 func ExampleTimeToStringTimeFull() {
-	t, _ := time.Parse("2006-01-02 15:04:05.000000", "2022-12-25 17:30:45.123456")
+	t, _ := time.Parse(layoutDateTime, "2022-12-25 17:30:45.123456")
 
 	got1 := dechutil.TimeToStringTimeFull(t)
 
