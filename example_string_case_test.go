@@ -6,8 +6,10 @@ import (
 	"github.com/THAI-DEV/dechutil"
 )
 
+const exampleString = "user login count"
+
 func ExampleToCamelCase() {
-	str := "user login count"
+	str := exampleString
 	got1 := dechutil.ToCamelCase(str)
 
 	fmt.Println(got1)
@@ -17,7 +19,7 @@ func ExampleToCamelCase() {
 }
 
 func ExampleToKebabCase() {
-	str := "user login count"
+	str := exampleString
 	got1 := dechutil.ToKebabCase(str)
 
 	fmt.Println(got1)
@@ -27,7 +29,7 @@ func ExampleToKebabCase() {
 }
 
 func ExampleToLowerCap() {
-	str := "user login count"
+	str := exampleString
 	got1 := dechutil.ToLowerCap(str)
 
 	fmt.Println(got1)
@@ -37,7 +39,7 @@ func ExampleToLowerCap() {
 }
 
 func ExampleToUpperCap() {
-	str := "user login count"
+	str := exampleString
 	got1 := dechutil.ToUpperCap(str)
 
 	fmt.Println(got1)
@@ -47,7 +49,7 @@ func ExampleToUpperCap() {
 }
 
 func ExampleToPascalCase() {
-	str := "user login count"
+	str := exampleString
 	got1 := dechutil.ToPascalCase(str)
 
 	fmt.Println(got1)
@@ -57,7 +59,7 @@ func ExampleToPascalCase() {
 }
 
 func ExampleToSnakeCase() {
-	str := "user login count"
+	str := exampleString
 	got1 := dechutil.ToSnakeCase(str)
 
 	fmt.Println(got1)
@@ -67,7 +69,7 @@ func ExampleToSnakeCase() {
 }
 
 func ExampleToSnakeCaseAllCap() {
-	str := "user login count"
+	str := exampleString
 	got1 := dechutil.ToSnakeCaseAllCap(str)
 
 	fmt.Println(got1)

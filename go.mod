@@ -1,3 +1,3 @@
 module github.com/THAI-DEV/dechutil
 
-go 1.22.3
+go 1.23.1
