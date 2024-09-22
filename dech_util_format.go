@@ -1,6 +1,20 @@
 package dechutil
 
+import (
+	"strings"
+)
+
 func FormatStringComma(input string, commaPosition int) string {
+	num1 := ""
+	ind := strings.Index(input, ".")
+	num2 := ""
+
+	if ind > -1 {
+		num1 = input[0:ind]
+		num2 = input[ind:]
+		input = num1
+	}
+
 	result := ""
 
 	numLen := len(input)
@@ -33,6 +47,10 @@ func FormatStringComma(input string, commaPosition int) string {
 		if i > 1 {
 			result = result + ","
 		}
+	}
+
+	if ind > 0 {
+		result = result + num2
 	}
 
 	return result
