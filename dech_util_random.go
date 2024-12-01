@@ -50,20 +50,30 @@ func RandomString(num int, hasLower, hasUpper, hasNumber, isRemoveSameChar bool)
 		}
 	}
 
-	seed := rand.NewSource(time.Now().UnixNano())
-	rand := rand.New(seed)
+	// seed := rand.NewSource(time.Now().UnixNano())
+	// rand := rand.New(seed)
 
-	result := ""
-	ch := make(chan string)
-	for {
-		go randomChar(rand, charset, ch)
-		result = result + string(<-ch)
-
-		if len(result) >= num {
-			close(ch)
-			break
-		}
+	var result strings.Builder
+	for i := 0; i < num; i++ {
+		c := charset[rand.Intn(len(charset))]
+		result.WriteByte(c)
 	}
+
+	return result.String()
+
+	/*
+		result := ""
+		ch := make(chan string)
+		for {
+			go randomChar(rand, charset, ch)
+			result = result + string(<-ch)
+
+			if len(result) >= num {
+				close(ch)
+				break
+			}
+		}
+	*/
 
 	/*
 		for {
@@ -75,10 +85,12 @@ func RandomString(num int, hasLower, hasUpper, hasNumber, isRemoveSameChar bool)
 			result = result + string(c)
 		}
 	*/
-	return result
+	// return result
 }
 
+/*
 func randomChar(rand *rand.Rand, charset string, ch chan string) {
 	c := charset[rand.Intn(len(charset))]
 	ch <- string(c)
 }
+*/
