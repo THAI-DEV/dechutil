@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync"
 
 	"github.com/THAI-DEV/dechutil"
 )
@@ -12,26 +13,31 @@ var list = []string{}
 
 func main() {
 	fmt.Println(separator)
-	case1()
+	// CaseNirmal()
+	// fmt.Println(separator)
+
+	// CaseLoop()
+	// fmt.Println(separator)
+
+	// CaseSync()
+	// fmt.Println(separator)
+
+	CaseASync()
 	fmt.Println(separator)
-	case2()
-	fmt.Println(separator)
-	case3()
-	fmt.Println("-------------------------------------------------")
 }
 
-func case1() {
+func CaseNirmal() {
 	fmt.Println(dechutil.RandomString(10, true, true, true, false))
 	fmt.Println(dechutil.RandomString(10, false, false, true, false))
 }
 
-func case2() {
+func CaseLoop() {
 	for i := 0; i < 10; i++ {
 		fmt.Println(i+1, dechutil.RandomString(10, true, true, true, false))
 	}
 }
 
-func case3() {
+func CaseSync() {
 	for i := 0; i < 100; i++ {
 		gen()
 	}
@@ -40,16 +46,45 @@ func case3() {
 	fmt.Println("Size:", len(list))
 }
 
+func CaseASync() {
+	n := 100
+	var wg sync.WaitGroup
+	var mu sync.Mutex
+
+	for i := 0; i < n; i++ {
+		wg.Add(1)
+		go genAsync(&wg, &mu)
+	}
+
+	wg.Wait()
+	fmt.Println("List:", list)
+	fmt.Println("Size:", len(list))
+}
+
 func gen() {
 	s := dechutil.RandomString(8, true, true, true, true)
-
-	// fmt.Println("String:", s)
 
 	if isDuplicate(list, s) {
 		fmt.Println("Duplicate:", s)
 	} else {
 		list = append(list, s)
 	}
+}
+
+func genAsync(wg *sync.WaitGroup, mu *sync.Mutex) {
+	defer wg.Done()
+
+	mu.Lock()
+	defer mu.Unlock()
+
+	s := dechutil.RandomString(8, true, true, true, true)
+
+	if isDuplicate(list, s) {
+		fmt.Println("Duplicate:", s)
+	} else {
+		list = append(list, s)
+	}
+
 }
 
 func isDuplicate(list []string, s string) bool {
