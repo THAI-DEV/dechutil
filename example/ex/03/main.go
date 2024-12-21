@@ -13,7 +13,7 @@ var list = []string{}
 
 func main() {
 	fmt.Println(separator)
-	// CaseNirmal()
+	// CaseNormal()
 	// fmt.Println(separator)
 
 	// CaseLoop()
@@ -26,7 +26,7 @@ func main() {
 	fmt.Println(separator)
 }
 
-func CaseNirmal() {
+func CaseNormal() {
 	fmt.Println(dechutil.RandomString(10, true, true, true, false))
 	fmt.Println(dechutil.RandomString(10, false, false, true, false))
 }
