@@ -81,11 +81,11 @@ func NullStringToString(data *string, nullStrVal string) string {
 
 // * input : "abc", "xxxx" output : abc false
 // * input :"null val", "null val" output : <nil> true
-func StringToNullString(data string, defindStrVal string) (*string, bool) {
+func StringToNullString(data string, defineStrVal string) (*string, bool) {
 	var result *string
 	var isNull bool
 
-	if data == defindStrVal {
+	if data == defineStrVal {
 		result = nil
 		isNull = true
 	} else {
