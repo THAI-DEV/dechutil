@@ -23,7 +23,8 @@ func main() {
 	// fmt.Println(separator)
 
 	CaseASync()
-	fmt.Println(separator)
+	// fmt.Println(separator)
+
 }
 
 func CaseNormal() {
@@ -65,7 +66,7 @@ func gen() {
 	s := dechutil.RandomString(8, true, true, true, true)
 
 	if isDuplicate(list, s) {
-		fmt.Println("Duplicate:", s)
+		fmt.Println("Duplicate data:", s)
 	} else {
 		list = append(list, s)
 	}

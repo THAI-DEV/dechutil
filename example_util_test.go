@@ -130,24 +130,43 @@ func ExampleTypeAndKindOfObject() {
 }
 
 func ExampleCalIndexByPageNo() {
-	got11, got12, got13 := dechutil.CalIndexByPageNo(1, 10, 100)
-	got21, got22, got23 := dechutil.CalIndexByPageNo(10, 10, 100)
+	var got1 = [3]int{0, 0, 0}
+	var got2 = [3]int{0, 0, 0}
+	var got3 = [3]int{0, 0, 0}
+	var got4 = [3]int{0, 0, 0}
+	var got5 = [3]int{0, 0, 0}
+	var got6 = [3]int{0, 0, 0}
+	var got7 = [3]int{0, 0, 0}
+	var got8 = [3]int{0, 0, 0}
 
-	got31, got32, got33 := dechutil.CalIndexByPageNo(1, 4, 8)
-	got41, got42, got43 := dechutil.CalIndexByPageNo(2, 5, 8)
+	got1[0], got1[1], got1[2] = dechutil.CalIndexByPageNo(1, 10, 100)
+	got2[0], got2[1], got2[2] = dechutil.CalIndexByPageNo(10, 10, 100)
 
-	got51, got52, got53 := dechutil.CalIndexByPageNo(3, 5, 10)
+	got3[0], got3[1], got3[2] = dechutil.CalIndexByPageNo(1, 4, 8)
 
-	fmt.Println(got11, got12, got13)
-	fmt.Println(got21, got22, got23)
-	fmt.Println(got31, got32, got33)
-	fmt.Println(got41, got42, got43)
-	fmt.Println(got51, got52, got53)
+	got4[0], got4[1], got4[2] = dechutil.CalIndexByPageNo(2, 5, 6)
+	got5[0], got5[1], got5[2] = dechutil.CalIndexByPageNo(2, 5, 7)
+	got6[0], got6[1], got6[2] = dechutil.CalIndexByPageNo(2, 5, 8)
+	got7[0], got7[1], got7[2] = dechutil.CalIndexByPageNo(2, 5, 9)
+
+	got8[0], got8[1], got8[2] = dechutil.CalIndexByPageNo(3, 5, 10)
+
+	fmt.Println(got1[0], got1[1], got1[2])
+	fmt.Println(got2[0], got2[1], got2[2])
+	fmt.Println(got3[0], got3[1], got3[2])
+	fmt.Println(got4[0], got4[1], got4[2])
+	fmt.Println(got5[0], got5[1], got5[2])
+	fmt.Println(got6[0], got6[1], got6[2])
+	fmt.Println(got7[0], got7[1], got7[2])
+	fmt.Println(got8[0], got8[1], got8[2])
 
 	// Output:
 	// 0 9 10
 	// 90 99 10
 	// 0 3 2
+	// 5 5 2
+	// 5 6 2
 	// 5 7 2
+	// 5 8 2
 	// -1 -1 2
 }

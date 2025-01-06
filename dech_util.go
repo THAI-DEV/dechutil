@@ -96,7 +96,7 @@ func CalIndexByPageNo(pageNo int, rowPerPage int, totalItem int) (int, int, int)
 	beginIndex := (pageNo - 1) * rowPerPage
 	endIndex := pageNo * rowPerPage
 	endIndex = endIndex - 1
-	if endIndex > totalItem {
+	if endIndex >= totalItem {
 		endIndex = totalItem - 1
 	}
 
