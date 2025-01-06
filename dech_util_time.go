@@ -50,8 +50,8 @@ func UnitSecToMinute(sec int) float64 {
 	return min
 }
 
-func ElapseTime(milisDiff int64) string {
-	if milisDiff < 1000 {
+func ElapseTime(milsDiff int64) string {
+	if milsDiff < 1000 {
 		return "0 second"
 	}
 
@@ -66,17 +66,17 @@ func ElapseTime(milisDiff int64) string {
 	timeElapsed := [6]int{0, 0, 0, 0, 0, 0}
 	timeElapsedText := [6]string{"second", "minute", "hour", "day", "week", "month"}
 
-	timeElapsed[5] = int(toFix(milisDiff / monthInMillis)) // months
-	milisDiff = milisDiff % monthInMillis
-	timeElapsed[4] = int(toFix(milisDiff / weekInMillis)) // weeks
-	milisDiff = milisDiff % weekInMillis
-	timeElapsed[3] = int(toFix(milisDiff / dayInMillis)) // days
-	milisDiff = milisDiff % dayInMillis
-	timeElapsed[2] = int(toFix(milisDiff / hourInMillis)) // hours
-	milisDiff = milisDiff % hourInMillis
-	timeElapsed[1] = int(toFix(milisDiff / minuteInMillis)) // minutes
-	milisDiff = milisDiff % minuteInMillis
-	timeElapsed[0] = int(toFix(milisDiff / secondInMillis)) // seconds
+	timeElapsed[5] = int(toFix(milsDiff / monthInMillis)) // months
+	milsDiff = milsDiff % monthInMillis
+	timeElapsed[4] = int(toFix(milsDiff / weekInMillis)) // weeks
+	milsDiff = milsDiff % weekInMillis
+	timeElapsed[3] = int(toFix(milsDiff / dayInMillis)) // days
+	milsDiff = milsDiff % dayInMillis
+	timeElapsed[2] = int(toFix(milsDiff / hourInMillis)) // hours
+	milsDiff = milsDiff % hourInMillis
+	timeElapsed[1] = int(toFix(milsDiff / minuteInMillis)) // minutes
+	milsDiff = milsDiff % minuteInMillis
+	timeElapsed[0] = int(toFix(milsDiff / secondInMillis)) // seconds
 
 	// Only adds 3 significant high valued units
 	j := 0
@@ -123,6 +123,12 @@ func SecondTimeToUnitTime(secondTime uint64) (days uint64, hours uint64, minutes
 	//fmt.Sprintf("%d day, %d hour, %d min, %d sec", days, hours, minutes, seconds)
 
 	return
+}
+
+func CurrentBkkTime() time.Time {
+	location := time.FixedZone("GMT+7", 7*3600)
+	currentTime := time.Now().In(location)
+	return currentTime
 }
 
 func toFix(value int64) int {

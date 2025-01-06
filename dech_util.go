@@ -9,7 +9,7 @@ import (
 )
 
 func Version() string {
-	return "DECH Util , Version : 1.0.0 , Last Build : 03/12/2024 13:23"
+	return "DECH Util , Version : 1.0.0 , Last Build : 06/01/2025 16:34"
 }
 
 func TypeAndKindOfObject(inf interface{}) (string, string) {
@@ -90,6 +90,30 @@ func IsNullString(data *string) bool {
 
 func RoundFloat(data float64, decimal int) float64 {
 	return math.Round(data*math.Pow(10, float64(decimal))) / math.Pow(10, float64(decimal))
+}
+
+func CalIndexByPageNo(pageNo int, rowPerPage int, totalItem int) (int, int, int) {
+	beginIndex := (pageNo - 1) * rowPerPage
+	endIndex := pageNo * rowPerPage
+	endIndex = endIndex - 1
+	if endIndex > totalItem {
+		endIndex = totalItem - 1
+	}
+
+	maxPage := totalItem / rowPerPage
+	totalItemMod := totalItem % rowPerPage
+	if totalItemMod > 0 {
+		maxPage++
+	}
+
+	if pageNo > maxPage {
+		beginIndex = -1
+		endIndex = -1
+	}
+
+	// fmt.Println("beginIndex:", beginIndex, "endIndex:", endIndex, "maxPage:", maxPage)
+
+	return beginIndex, endIndex, maxPage
 }
 
 /*

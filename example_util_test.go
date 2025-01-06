@@ -128,3 +128,26 @@ func ExampleTypeAndKindOfObject() {
 	// bool bool
 	// []string slice
 }
+
+func ExampleCalIndexByPageNo() {
+	got11, got12, got13 := dechutil.CalIndexByPageNo(1, 10, 100)
+	got21, got22, got23 := dechutil.CalIndexByPageNo(10, 10, 100)
+
+	got31, got32, got33 := dechutil.CalIndexByPageNo(1, 4, 8)
+	got41, got42, got43 := dechutil.CalIndexByPageNo(2, 5, 8)
+
+	got51, got52, got53 := dechutil.CalIndexByPageNo(3, 5, 10)
+
+	fmt.Println(got11, got12, got13)
+	fmt.Println(got21, got22, got23)
+	fmt.Println(got31, got32, got33)
+	fmt.Println(got41, got42, got43)
+	fmt.Println(got51, got52, got53)
+
+	// Output:
+	// 0 9 10
+	// 90 99 10
+	// 0 3 2
+	// 5 7 2
+	// -1 -1 2
+}
