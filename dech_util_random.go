@@ -88,6 +88,45 @@ func RandomString(num int, hasLower, hasUpper, hasNumber, isRemoveSameChar bool)
 	// return result
 }
 
+func RandomAnyString(num int) string {
+	charset := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
+	var result strings.Builder
+	for i := 0; i < num; i++ {
+		c := charset[rand.Intn(len(charset))]
+		result.WriteByte(c)
+	}
+
+	return result.String()
+}
+
+func RandomNumberString(num int) string {
+	charset := "1234567890"
+
+	var result strings.Builder
+	for i := 0; i < num; i++ {
+		c := charset[rand.Intn(len(charset))]
+		result.WriteByte(c)
+	}
+
+	return result.String()
+}
+
+func RandomNonZeroNumberString(num int) string {
+	result := RandomNumberString(num)
+
+	for {
+		if result[0] == '0' {
+			result = RandomNumberString(num)
+		} else {
+			break
+
+		}
+	}
+
+	return result
+}
+
 /*
 func randomChar(rand *rand.Rand, charset string, ch chan string) {
 	c := charset[rand.Intn(len(charset))]
